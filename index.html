@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#f4a62a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+<title>Kuis Anak</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin:0; padding:0; min-height:100%;
+    font-family: "Baloo 2","Fredoka","Comic Sans MS","Segoe UI",system-ui,sans-serif;
+    color:#333; background: linear-gradient(160deg, #ffe8b3, #b8e6ff);
+  }
+  .wrap { max-width: 640px; margin:0 auto; padding: 26px 16px 34px; text-align:center; }
+  .mascot { font-size: 76px; line-height:1; display:inline-block; animation: bounce 2s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+  h1 { font-size: 38px; margin: 6px 0 2px; color:#f4a62a; text-shadow: 2px 3px 0 rgba(255,255,255,.8); }
+  .sub { margin: 0 0 22px; font-size: 16px; opacity:.7; }
+  .list { display:flex; flex-direction:column; gap: 14px; }
+  a.card {
+    display:flex; align-items:center; gap:14px; text-decoration:none; color:#333;
+    background:#fff; border-radius:22px; padding: 16px 18px; text-align:left;
+    box-shadow: 0 6px 0 rgba(0,0,0,.10); transition: transform .12s ease, box-shadow .12s ease;
+    border-left: 10px solid var(--c, #f4a62a);
+  }
+  a.card:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(0,0,0,.10); }
+  .ico { font-size: 40px; line-height:1; flex: 0 0 auto; }
+  .name { font-size: 22px; font-weight: 700; }
+  .desc { font-size: 14px; opacity:.65; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mascot">🎲</div>
+  <h1>Kuis Anak</h1>
+  <p class="sub">Pilih kuisnya</p>
+
+  <div class="list">
+    <a class="card" href="bindo/"     style="--c:#f4a62a"><span class="ico">🎲</span><span><span class="name">Kuis Bahasa Indonesia</span><br><span class="desc">Bab 2 — Mari Bermain</span></span></a>
+    <a class="card" href="agama/"     style="--c:#38b000"><span class="ico">🙏</span><span><span class="name">Kuis Agama</span><br><span class="desc">Aku Bersyukur &amp; Bangga Menjadi Diriku</span></span></a>
+    <a class="card" href="mandarin/"  style="--c:#3a9fe0"><span class="ico">🐼</span><span><span class="name">Kuis Mandarin</span><br><span class="desc">Belajar huruf &amp; guratan</span></span></a>
+    <a class="card" href="pancasila/" style="--c:#e5383b"><span class="ico">🦅</span><span><span class="name">Kuis Pancasila</span><br><span class="desc">Bab 1 — Aku Bangga Menjadi Anak Indonesia</span></span></a>
+  </div>
+</div>
+</body>
+</html>
