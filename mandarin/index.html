@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ff5e7a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐼</text></svg>">
+<title>Kuis Mandarin 🐼</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ SCREEN: HOME ============ -->
+  <section id="screen-home" class="screen active">
+    <div class="home-wrap">
+      <div class="mascot bounce">🐼</div>
+      <h1 class="title">Kuis Mandarin</h1>
+      <p class="subtitle" id="homeSubtitle"></p>
+
+      <div class="home-count" id="writeCountWrap">
+        <span>Jumlah karakter latihan menulis?</span>
+        <div class="count-btns" id="writeCountBtns">
+          <button data-wn="3">3</button>
+          <button data-wn="5" class="sel">5</button>
+          <button data-wn="7">7</button>
+        </div>
+      </div>
+
+      <div class="home-count">
+        <span>Pilih bab:</span>
+        <div class="count-btns chapter-btns" id="chapterBtns"></div>
+      </div>
+
+      <div class="home-count">
+        <span>Mode soal?</span>
+        <div class="count-btns" id="modeBtns">
+          <button data-mode="all" class="sel">Semua</button>
+          <button data-mode="imgwrite">Gambar+Tulis</button>
+          <button data-mode="img">Gambar saja</button>
+          <button data-mode="write">Tulis saja</button>
+        </div>
+      </div>
+
+      <div class="home-count">
+        <span>Berapa soal?</span>
+        <div class="count-btns" id="countBtns">
+          <button data-n="5">5</button>
+          <button data-n="10" class="sel">10</button>
+          <button data-n="15">15</button>
+        </div>
+      </div>
+
+      <button id="btnStart" class="big-btn primary">🎮 Mulai Kuis</button>
+      <button id="btnLearn" class="big-btn secondary">📖 Belajar &amp; Tulis</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: LEARN ============ -->
+  <section id="screen-learn" class="screen">
+    <header class="topbar">
+      <button class="icon-btn" id="learnBack">🏠</button>
+      <div class="topbar-title" id="learnTitle">Belajar</div>
+      <div class="topbar-spacer"></div>
+    </header>
+
+    <div class="learn-body">
+      <!-- thumbnails -->
+      <div class="thumb-strip" id="thumbStrip"></div>
+
+      <!-- main card -->
+      <div class="learn-card" id="learnCard">
+        <div class="learn-char" id="learnChar"></div>
+        <div class="learn-num" id="learnNum"></div>
+        <div class="learn-pinyin" id="learnPinyin"></div>
+        <div class="learn-hint" id="learnHint"></div>
+
+        <!-- stroke animation area -->
+        <div class="stroke-box">
+          <div class="stroke-canvas" id="strokeCanvas"></div>
+        </div>
+
+        <div class="learn-actions">
+          <button class="round-btn" id="learnListen" title="Dengar">🔊</button>
+          <button class="round-btn write-btn" id="learnWrite" title="Tulis sendiri">✍️</button>
+          <div class="learn-nav">
+            <button class="round-btn" id="learnPrev">⬅️</button>
+            <button class="round-btn" id="learnStop">⏹️</button>
+            <button class="round-btn" id="learnNext">➡️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: QUIZ ============ -->
+  <section id="screen-quiz" class="screen">
+    <header class="topbar">
+      <button class="icon-btn" id="quizQuit">🏠</button>
+      <div class="hud">
+        <div class="hud-score" id="hudScore">0</div>
+        <div class="hud-streak" id="hudStreak"></div>
+      </div>
+      <div class="hud-progress"><div class="hud-bar" id="hudBar"></div></div>
+    </header>
+
+    <div class="quiz-body">
+      <div class="q-meta">
+        <span class="q-num" id="qNum"></span>
+        <span class="q-type" id="qType"></span>
+      </div>
+
+      <div class="q-prompt" id="qPrompt">
+        <!-- dynamic -->
+      </div>
+
+      <div class="q-main" id="qMain">
+        <!-- the big char / number / hanzi writer -->
+      </div>
+      <button class="rehear" id="btnRehear">🔊 Ulangi suara</button>
+
+      <button class="skip-btn" id="btnSkip">⏭️ Lewati</button>
+
+      <div class="options" id="options">
+        <!-- answer buttons -->
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: RESULT ============ -->
+  <section id="screen-result" class="screen">
+    <div class="result-wrap">
+      <div class="result-stars" id="resultStars"></div>
+      <h2 class="result-title" id="resultTitle"></h2>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-stats" id="resultStats"></div>
+      <button id="btnAgain" class="big-btn primary">🔁 Main Lagi</button>
+      <button id="btnHome" class="big-btn secondary">🏠 Menu</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="vendor/hanzi-writer.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

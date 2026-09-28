@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <rect x="0.5" y="0.5" width="107" height="107" rx="6" fill="#231F20"/>
+  <!-- bintang emas bersudut lima -->
+  <polygon fill="#FFE89E" points="54,10 64.2,36.6 92.6,38.1 71,56.5 78.7,84.9 54,69.4 29.3,84.9 37,56.5 15.4,38.1 43.8,36.6"/>
+  <polygon fill="#F2C24B" points="54,10 43.8,36.6 15.4,38.1 37,56.5 29.3,84.9 54,69.4 54,44"/>
+</svg>

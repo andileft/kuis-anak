@@ -1,0 +1,384 @@
+/* ===== Kuis Mandarin — Angka 1-10 ===== */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg1: #ffd7e0;
+  --bg2: #bde0fe;
+  --pink: #ff5e7a;
+  --pink-d: #e0435f;
+  --blue: #3a86ff;
+  --blue-d: #2a6bd8;
+  --green: #38b000;
+  --green-d: #2b8a00;
+  --orange: #ff9f1c;
+  --purple: #9d4edd;
+  --ink: #333;
+  --card: #ffffff;
+  --radius: 22px;
+}
+
+html, body {
+  margin: 0; padding: 0;
+  height: 100%;
+  font-family: "Baloo 2", "Fredoka", "Comic Sans MS", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg1), var(--bg2));
+  touch-action: manipulation;
+  overflow: hidden;
+}
+
+#app { height: 100%; width: 100%; }
+
+.screen {
+  position: fixed; inset: 0;
+  display: none;
+  flex-direction: column;
+  max-width: 640px; margin: 0 auto;
+  padding: 14px;
+}
+.screen.active { display: flex; animation: fadeIn .3s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: none;} }
+
+/* ---------- HOME ---------- */
+#screen-home { overflow-y: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+.home-wrap {
+  margin: 0 auto; text-align: center; width: 100%;
+  min-height: calc(100% - 20px);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8px 0;
+}
+.mascot { font-size: 74px; line-height: 1; margin-bottom: 2px; }
+.bounce { animation: bounce 2s infinite; display:inline-block; }
+@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+
+.title {
+  font-size: 44px; margin: 2px 0 0; color: var(--pink);
+  text-shadow: 2px 3px 0 rgba(255,255,255,.7);
+  letter-spacing: 1px;
+}
+.subtitle { font-size: 18px; margin: 4px 0 0; font-weight: 600; }
+.zh { font-size: 26px; color: var(--blue); letter-spacing: 6px; display:inline-block; margin-top:2px; }
+
+.home-count { margin: 8px 0 2px; font-size: 16px; font-weight: 700; }
+.count-btns { display:flex; gap:10px; justify-content:center; margin-top:4px; }
+.count-btns button {
+  width: 46px; height: 46px; border:none; border-radius: 14px;
+  font-size: 19px; font-weight: 800; color:#fff; background: var(--blue);
+  box-shadow: 0 4px 0 var(--blue-d); cursor:pointer;
+}
+.count-btns button.sel { background: var(--pink); box-shadow: 0 4px 0 var(--pink-d); transform: scale(1.08); }
+#modeBtns button { width:auto; min-width:60px; padding:0 12px; font-size:15px; white-space:nowrap; }
+@media (max-width: 420px) { #modeBtns button { font-size:13px; padding:0 8px; min-width:52px; } }
+
+.big-btn {
+  display:block; width: min(86%, 360px); margin: 8px auto;
+  padding: 12px; border:none; border-radius: 18px;
+  font-size: 22px; font-weight: 800; color:#fff; cursor:pointer;
+  letter-spacing: 1px;
+}
+.big-btn:active { transform: scale(.96); }
+.big-btn.primary { background: linear-gradient(180deg, var(--pink), var(--pink-d)); box-shadow: 0 6px 0 var(--pink-d); }
+.big-btn.secondary { background: linear-gradient(180deg, #5bc0eb, #1b9aaa); box-shadow: 0 6px 0 #11808d; }
+
+/* ---------- TOPBAR / HUD ---------- */
+.topbar {
+  display:flex; align-items:center; gap:10px;
+  background: var(--card); border-radius: 18px;
+  padding: 10px 12px; box-shadow: 0 3px 8px rgba(0,0,0,.08);
+  margin-bottom: 10px;
+}
+.icon-btn {
+  width: 48px; height: 48px; border:none; border-radius:14px;
+  background:#f1f3f5; font-size: 24px; cursor:pointer;
+}
+.topbar-title { flex:1; text-align:center; font-size:22px; font-weight:800; }
+.topbar-spacer { width:48px; }
+
+.hud { display:flex; align-items:center; gap:8px; min-width:90px; justify-content:center; }
+.hud-score {
+  font-size: 26px; font-weight:900; color:var(--blue);
+  background:#e8f0ff; padding:2px 14px; border-radius:12px;
+}
+.hud-streak { font-size: 22px; }
+.hud-progress { flex:1; height: 14px; background:#eee; border-radius: 8px; overflow:hidden; }
+.hud-bar { height:100%; width:0%; background: linear-gradient(90deg,var(--green),#7bdb3f); border-radius:8px; transition: width .4s ease; }
+
+/* ---------- QUIZ ---------- */
+.quiz-body { display:flex; flex-direction:column; flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+
+.q-meta { display:flex; justify-content:space-between; padding: 2px 6px 6px; }
+.q-num { font-weight:800; font-size:18px; color:#666; }
+.q-type { font-weight:800; font-size:16px; color:var(--purple); }
+
+.q-main {
+  background: var(--card); border-radius: var(--radius);
+  padding: 12px; flex: 1; display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08); min-height: 170px;
+}
+.big-char { font-size: 110px; line-height:1; color:var(--ink); }
+.big-char.glow { animation: pop .5s ease; }
+@keyframes pop { 0%{transform:scale(.3);opacity:0;} 60%{transform:scale(1.12);} 100%{transform:scale(1);opacity:1;} }
+
+.stroke-qs { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.stroke-qs .stroke-canvas { width: 100%; max-width: 240px; }
+
+/* audio note on written-question */
+.q-note { font-size: 18px; font-weight:700; color:#888; margin-top:6px; }
+
+/* tombol ulangi suara (dulu belum punya gaya sendiri) */
+.rehear {
+  display: block; margin: 4px auto 0; padding: 4px 12px;
+  border: none; background: transparent; cursor: pointer;
+  font-size: 15px; font-weight: 700; color: var(--blue); font-family: inherit;
+}
+.rehear:active { transform: scale(.96); }
+
+/* "hitung gambar" question grid */
+.img-grid {
+  display: grid; gap: 6px; justify-content: center;
+  grid-template-columns: repeat(5, auto);
+  font-size: 40px; line-height: 1.05;
+}
+.img-grid span { animation: pop .4s ease backwards; }
+@media (max-width: 420px) { .img-grid { font-size: 30px; } }
+
+/* inline pinyin under a prompt */
+.py-inline { font-size: 20px; color: var(--purple); font-weight: 700; }
+
+/* hide option buttons when a question has no multiple choice */
+.options.hidden { display: none; }
+.home-count.hidden { display: none; }
+
+/* skip button for writing questions */
+.skip-btn {
+  display: block; margin: 6px auto 0; padding: 8px 18px;
+  border: none; border-radius: 14px;
+  background: var(--orange); color: #fff; font-size: 17px; font-weight: 800; cursor: pointer;
+  box-shadow: 0 4px 0 #d9820e; font-family: inherit;
+}
+.skip-btn:active { transform: scale(.96); }
+.skip-btn.hidden { display: none; }
+
+/* ---------- OPTIONS ---------- */
+.options {
+  display: grid; gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+}
+.options.single { grid-template-columns: 1fr; }
+.opt {
+  padding: 12px 8px; border: 3px solid transparent; border-radius: 18px;
+  background: var(--card); font-size: 30px; font-weight: 900; color: var(--ink); font-family: inherit;
+  cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,.12); min-height: 64px;
+  display:flex; align-items:center; justify-content:center;
+}
+.opt.pinyin { font-size: 26px; }
+.opt.char-opt { font-size: 44px; background: #fef3c7; }
+.opt:active { transform: scale(.96); }
+.opt.correct { background: var(--green); color:#fff; animation: pop .4s ease; box-shadow:0 4px 0 var(--green-d); }
+.opt.wrong { background: #e5383b; color:#fff; animation: shake .4s ease; box-shadow:0 4px 0 #b21e22; }
+.opt.disabled { pointer-events:none; }
+
+@keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-8px);} 75%{transform:translateX(8px);} }
+
+/* trace box */
+.trace-wrap { display:flex; flex-direction:column; align-items:center; gap:6px; width:100%; }
+.trace-wrap .stroke-canvas { width: 100%; max-width: 210px; }
+.trace-hint { font-size: 15px; color:#777; font-weight:600; }
+
+/* kotak pembatas latihan menulis (田字格: kotak + silang putus-putus) */
+.write-box {
+  width: auto;
+  box-sizing: border-box;
+  padding: 5px;
+  background-color: #fff;
+  border: 3px solid #b3a6e0;
+  border-radius: 16px;
+  box-shadow: 0 4px 0 rgba(90,70,160,.16), inset 0 0 0 2px #f4f0ff;
+  background-image:
+    repeating-linear-gradient(to right, #d7cdf3 0 7px, rgba(0,0,0,0) 7px 14px),
+    repeating-linear-gradient(to bottom, #d7cdf3 0 7px, rgba(0,0,0,0) 7px 14px);
+  background-size: 100% 2px, 2px 100%;
+  background-position: 0 50%, 50% 0;
+  background-repeat: no-repeat;
+}
+.trace-wrap .stroke-canvas.write-box { max-width: 226px; min-height: 226px; }
+.trace-wrap .stroke-canvas.write-box,
+.learn-canvases .stroke-canvas.write-box { background-color: #fff; }
+.write-box svg { display: block; max-width: 100%; height: auto; }
+
+/* kata 2 karakter di soal menulis */
+.trace-wrap .stroke-canvas .learn-canvases { display:flex; gap:6px; justify-content:center; }
+
+/* soal menjodohkan (dua kolom) */
+.match-info { text-align: center; font-size: 14px; font-weight: 700; color: #666; margin: 0 0 6px; }
+.options.match-opt { display: block; }
+.match-wrap { display: flex; gap: 10px; }
+.match-col { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.col-label { text-align: center; font-weight: 800; font-size: 13px; color: var(--purple); margin-bottom: 2px; }
+.m-item {
+  padding: 10px 8px; border-radius: 14px; text-align: center; font-weight: 800;
+  background: var(--card); box-shadow: 0 3px 0 rgba(0,0,0,.12); cursor: pointer;
+  font-size: 22px; line-height: 1.2; min-height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  word-break: break-word;
+}
+.m-item.m-right { background: #fef3c7; }
+.m-item.sel { background: var(--blue); color: #fff; transform: scale(1.03); box-shadow: 0 4px 0 var(--blue-d); }
+.m-item.done { background: var(--green) !important; color: #fff; box-shadow: 0 3px 0 var(--green-d); cursor: default; }
+.m-item.err-anim { animation: shake .4s ease; }
+@media (max-width: 420px) {
+  .m-item { font-size: 19px; min-height: 46px; padding: 8px 6px; }
+  .match-info { font-size: 13px; }
+}
+
+/* ---------- FEEDBACK ---------- */
+.feedback { min-height: 40px; display:flex; align-items:center; justify-content:center; font-size: 22px; font-weight:900; margin-top:4px; flex-wrap: wrap; }
+.feedback .fb-good { color: var(--green); }
+.feedback .fb-bad { color:#e5383b; }
+.fb-sticker { font-size: 40px; }
+
+/* ---------- LEARN ---------- */
+.learn-body { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+.thumb-strip { display:flex; gap:8px; overflow-x:auto; padding:6px 2px 12px; }
+.thumb {
+  flex:0 0 auto; width:52px; height:52px; border-radius:14px; border:none;
+  background:#fff; font-size:26px; font-weight:800; cursor:pointer; color:var(--ink);
+  box-shadow:0 3px 0 rgba(0,0,0,.12);
+}
+.thumb.sel { background: var(--pink); color:#fff; transform: scale(1.12); }
+
+.learn-card {
+  flex:1; background: var(--card); border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08); padding: 14px;
+  display:flex; flex-direction:column; overflow-y:auto; -webkit-overflow-scrolling:touch;
+}
+.learn-char { font-size: 82px; text-align:center; line-height:1.05; }
+.learn-num.hidden { display: none; }
+.learn-num { font-size: 24px; text-align:center; font-weight:900; color:var(--blue); }
+.learn-pinyin { font-size: 31px; text-align:center; font-weight:800; color:var(--pink); margin-top:2px; }
+.learn-hint { font-size: 14px; text-align:center; color:#777; font-weight:600; padding-top:2px; }
+
+.stroke-box {
+  flex:1; display:flex; align-items:center; justify-content:center;
+  min-height: 190px;
+}
+.stroke-canvas { width:100%; max-width: 200px; }
+
+.learn-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:6px; }
+.round-btn {
+  border:none; border-radius:16px; background: var(--blue); color:#fff;
+  font-size: 22px; padding: 12px 16px; cursor:pointer; box-shadow:0 4px 0 var(--blue-d);
+  font-family: inherit;
+}
+.learn-nav { display:flex; gap:10px; }
+
+/* ---------- RESULT ---------- */
+.result-wrap { margin:auto; text-align:center; width:100%; }
+.result-stars { font-size: 64px; letter-spacing: 6px; line-height:1.2; }
+.result-title { font-size: 40px; margin: 6px 0 2px; color: var(--pink); }
+.result-score { font-size: 32px; font-weight:900; color:var(--blue); margin:6px 0; }
+.result-stats { font-size: 19px; font-weight:700; color:#555; margin-bottom: 18px; }
+.result-score .big { font-size: 56px; }
+
+/* ---------- CONFETTI ---------- */
+.confetti {
+  position: fixed; width: 12px; height: 12px; z-index: 999; pointer-events:none;
+  border-radius: 3px; top:-20px;
+}
+.confetti.piece { animation: fall linear forwards; }
+@keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
+
+/* scrollbars subtle */
+.thumb-strip::-webkit-scrollbar { height: 6px; }
+.thumb-strip::-webkit-scrollbar-thumb { background:#ccc; border-radius:3px; }
+
+/* small screens */
+@media (max-width: 420px) {
+  .big-char { font-size: 88px; }
+  .learn-char { font-size: 74px; }
+  .opt { font-size: 27px; min-height: 58px; }
+  .opt.char-opt { font-size: 38px; }
+  .opt.arti { font-size: 19px; }
+  .opt.pinyin { font-size: 23px; }
+  .mascot { font-size: 56px; }
+  .title { font-size: 34px; }
+  .subtitle { font-size: 16px; margin-top: 2px; }
+  .zh { font-size: 20px; letter-spacing: 4px; }
+  .home-count { font-size: 15px; margin: 7px 0 2px; }
+  .count-btns button { width: 42px; height: 42px; font-size: 17px; }
+  #chapterBtns button { min-width: 98px; font-size: 12px; padding: 0 6px; height: 42px; }
+  .big-btn { font-size: 20px; padding: 11px; margin: 7px auto; }
+}
+
+/* ================= BAB 2 (Salam & Sapaan) ================= */
+
+/* pemilih bab di menu utama */
+#chapterBtns button {
+  width: auto; min-width: 128px; padding: 0 12px;
+  font-size: 15px; white-space: nowrap;
+}
+@media (max-width: 420px) {
+  #chapterBtns button { min-width: 104px; font-size: 13px; padding: 0 8px; height: 46px; }
+}
+
+/* kata 2 karakter tampil lebih kecil supaya pas */
+.big-char.word { font-size: 84px; letter-spacing: 6px; }
+.learn-char.word { font-size: 66px; letter-spacing: 8px; }
+@media (max-width: 420px) {
+  .big-char.word { font-size: 66px; }
+  .learn-char.word { font-size: 54px; }
+}
+
+/* jawaban arti (kata-kata) */
+.opt.arti { font-size: 22px; padding: 12px 8px; line-height: 1.25; }
+@media (max-width: 420px) { .opt.arti { font-size: 19px; } }
+
+/* thumb kata 2 karakter */
+.thumb.wide { width: 66px; font-size: 20px; letter-spacing: 1px; }
+
+/* beberapa canvas berdampingan (kata 2 karakter) */
+#strokeCanvas { max-width: 100%; }
+.learn-canvases { display: flex; gap: 6px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.learn-canvases .stroke-canvas { width: auto; flex: 0 0 auto; max-width: 128px; }
+.learn-canvases svg { width: auto; height: auto; display: block; }
+#strokeCanvas > svg { width: auto; max-width: 100%; height: auto; display: block; }
+.stroke-qs { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.stroke-qs .stroke-canvas { width: auto; flex: 0 0 auto; max-width: 128px; }
+.stroke-qs svg { width: auto; height: auto; display: block; }
+.trace-wrap .stroke-canvas { width: 100%; max-width: 210px; }
+.trace-wrap .stroke-canvas svg { width: auto; max-width: 100%; height: auto; display: block; }
+
+/* soal "lihat gambar" (bab 2) */
+.scene-wrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.scene-emoji { font-size: 96px; line-height: 1.1; }
+.scene-arti { font-size: 21px; font-weight: 800; color: var(--purple); }
+
+/* soal percakapan */
+.dialog-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }
+.dlg-scene { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.dlg-emoji { font-size: 62px; line-height: 1; }
+.dlg-bubble {
+  position: relative; background: #e8f0ff; border: 3px solid var(--blue);
+  border-radius: 18px; padding: 10px 16px;
+  font-size: 36px; font-weight: 800; color: #234;
+}
+.dlg-bubble::after {
+  content: ""; position: absolute; left: -14px; top: 50%; transform: translateY(-50%);
+  border: 10px solid transparent; border-right-color: var(--blue);
+}
+.dlg-reply {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #fff3cd; border: 3px dashed var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 900; color: var(--orange);
+}
+.dlg-note { font-size: 16px; font-weight: 700; color: #777; text-align: center; }
+@media (max-width: 420px) {
+  .dlg-emoji { font-size: 52px; }
+  .dlg-bubble { font-size: 30px; padding: 8px 12px; }
+  .dlg-reply { width: 52px; height: 52px; font-size: 28px; }
+  .scene-emoji { font-size: 80px; }
+}
+

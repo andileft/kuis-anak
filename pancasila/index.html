@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#c81f2b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>">
+<title>Kuis Pancasila 🦅 — Bab 1</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== HOME ===== -->
+  <section id="screen-home" class="screen active">
+    <div class="home-wrap">
+      <div class="mascot">🦅</div>
+      <h1 class="title">Kuis Pancasila</h1>
+      <p class="subtitle">Aku Bangga Menjadi Anak Indonesia</p>
+      <p class="zh">Garuda Pancasila • 5 Sila • Lambangnya</p>
+
+      <div class="home-count">
+        <span>Berapa soal?</span>
+        <div class="count-btns" id="countBtns">
+          <button data-n="10" class="sel">10</button>
+          <button data-n="15">15</button>
+        </div>
+      </div>
+
+      <button id="btnStart" class="big-btn primary">🎮 Mulai Kuis</button>
+      <button id="btnBelajar" class="big-btn secondary">📖 Belajar Sila</button>
+    </div>
+  </section>
+
+  <!-- ===== BELAJAR SILA ===== -->
+  <section id="screen-belajar" class="screen">
+    <header class="topbar">
+      <button class="icon-btn" id="belajarBack">🏠</button>
+      <div class="topbar-title">Belajar Sila Pancasila</div>
+      <div class="topbar-spacer"></div>
+    </header>
+    <div class="ayat-body" id="belajarBody"></div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="screen-quiz" class="screen">
+    <header class="topbar">
+      <button class="icon-btn" id="quizQuit">🏠</button>
+      <div class="hud">
+        <div class="hud-score" id="hudScore">0</div>
+        <div class="hud-streak" id="hudStreak"></div>
+      </div>
+      <div class="hud-progress"><div class="hud-bar" id="hudBar"></div></div>
+    </header>
+    <div class="quiz-body">
+      <div class="q-meta">
+        <span class="q-num" id="qNum"></span>
+        <span class="q-type" id="qType"></span>
+      </div>
+      <div class="q-prompt" id="qPrompt"></div>
+      <div class="q-main" id="qMain"></div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="screen-result" class="screen">
+    <div class="result-wrap">
+      <div class="result-stars" id="resultStars"></div>
+      <h2 class="result-title" id="resultTitle"></h2>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-stats" id="resultStats"></div>
+      <button id="btnAgain" class="big-btn primary">🔁 Main Lagi</button>
+      <button id="btnHome" class="big-btn secondary">🏠 Menu</button>
+    </div>
+  </section>
+
+</div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
