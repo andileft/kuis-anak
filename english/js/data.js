@@ -67,36 +67,36 @@ const MCQ = [
   { q:"The number of the days in a week is ....", o:["seven","five","ten"], a:0 },
 
   // --- school items: lihat gambar, sebutkan katanya ---
-  { q:"What is this? (Gambar ini apa?)", img:"assets/pen.png", o:["pen","pencil","ruler"], a:0 },
-  { q:"What is this?", img:"assets/pencil.png", o:["pencil","pen","glue"], a:0 },
-  { q:"What is this?", img:"assets/ruler.png", o:["ruler","book","map"], a:0 },
-  { q:"What is this?", img:"assets/eraser.png", o:["eraser","book","glue"], a:0 },
-  { q:"What is this?", img:"assets/book.png", o:["book","bag","map"], a:0 },
-  { q:"What is this?", img:"assets/map.png", o:["map","table","bag"], a:0 },
-  { q:"What is this?", img:"assets/glue.png", o:["glue","bag","clock"], a:0 },
-  { q:"What is this?", img:"assets/bag.png", o:["bag","book","chair"], a:0 },
-  { q:"What is this?", img:"assets/chair.png", o:["chair","table","bag"], a:0 },
-  { q:"What is this?", img:"assets/table.png", o:["table","chair","map"], a:0 },
+  { q:"What is this? (Gambar ini apa?)", img:"assets/pen.png?v=2", o:["pen","pencil","ruler"], a:0 },
+  { q:"What is this?", img:"assets/pencil.png?v=2", o:["pencil","pen","glue"], a:0 },
+  { q:"What is this?", img:"assets/ruler.png?v=2", o:["ruler","book","map"], a:0 },
+  { q:"What is this?", img:"assets/eraser.png?v=2", o:["eraser","book","glue"], a:0 },
+  { q:"What is this?", img:"assets/book.png?v=2", o:["book","bag","map"], a:0 },
+  { q:"What is this?", img:"assets/map.png?v=2", o:["map","table","bag"], a:0 },
+  { q:"What is this?", img:"assets/glue.png?v=2", o:["glue","bag","clock"], a:0 },
+  { q:"What is this?", img:"assets/bag.png?v=2", o:["bag","book","chair"], a:0 },
+  { q:"What is this?", img:"assets/chair.png?v=2", o:["chair","table","bag"], a:0 },
+  { q:"What is this?", img:"assets/table.png?v=2", o:["table","chair","map"], a:0 },
 
   // --- Is it a ...? (Yes, it is. / No, it isn't.) ---
-  { q:"Is it an eraser?", img:"assets/eraser.png", o:["Yes, it is.","No, it isn't."], a:0 },
-  { q:"Is it a table?", img:"assets/table.png", o:["Yes, it is.","No, it isn't."], a:0 },
-  { q:"Is it a chair?", img:"assets/chair.png", o:["Yes, it is.","No, it isn't."], a:0 },
-  { q:"Is it a pencil?", img:"assets/pen.png", o:["No, it isn't.","Yes, it is."], a:0 },
-  { q:"Is it a tape?", img:"assets/ruler.png", o:["No, it isn't.","Yes, it is."], a:0 },
-  { q:"Is it a clock?", img:"assets/map.png", o:["No, it isn't.","Yes, it is."], a:0 },
-  { q:"Is it a bag?", img:"assets/book.png", o:["No, it isn't.","Yes, it is."], a:0 },
-  { q:"Is it a ruler?", img:"assets/ruler.png", o:["Yes, it is.","No, it isn't."], a:0 },
+  { q:"Is it an eraser?", img:"assets/eraser.png?v=2", o:["Yes, it is.","No, it isn't."], a:0 },
+  { q:"Is it a table?", img:"assets/table.png?v=2", o:["Yes, it is.","No, it isn't."], a:0 },
+  { q:"Is it a chair?", img:"assets/chair.png?v=2", o:["Yes, it is.","No, it isn't."], a:0 },
+  { q:"Is it a pencil?", img:"assets/pen.png?v=2", o:["No, it isn't.","Yes, it is."], a:0 },
+  { q:"Is it a tape?", img:"assets/ruler.png?v=2", o:["No, it isn't.","Yes, it is."], a:0 },
+  { q:"Is it a clock?", img:"assets/map.png?v=2", o:["No, it isn't.","Yes, it is."], a:0 },
+  { q:"Is it a bag?", img:"assets/book.png?v=2", o:["No, it isn't.","Yes, it is."], a:0 },
+  { q:"Is it a ruler?", img:"assets/ruler.png?v=2", o:["Yes, it is.","No, it isn't."], a:0 },
 
   // --- How many? (hitung gambar) ---
-  { q:"How many glue bottles? (Ada berapa lem?)", img:"assets/count_glue3.png", o:["three","two","four"], a:0 },
-  { q:"How many rulers?", img:"assets/count_ruler7.png", o:["seven","six","nine"], a:0 },
-  { q:"How many books?", img:"assets/count_book2.png", o:["two","four","ten"], a:0 },
-  { q:"How many bags?", img:"assets/count_bag4.png", o:["four","five","two"], a:0 },
-  { q:"How many erasers?", img:"assets/count_eraser8.png", o:["eight","seven","six"], a:0 },
-  { q:"How many chairs?", img:"assets/count_chair2.png", o:["two","three","ten"], a:0 },
-  { q:"How many pencils?", img:"assets/count_pencil5.png", o:["five","four","nine"], a:0 },
-  { q:"How many pencils?", img:"assets/count_pencil4.png", o:["four","five","seven"], a:0 },
+  { q:"How many glue bottles? (Ada berapa lem?)", img:"assets/count_glue3.png?v=2", o:["three","two","four"], a:0 },
+  { q:"How many rulers?", img:"assets/count_ruler7.png?v=2", o:["seven","six","nine"], a:0 },
+  { q:"How many books?", img:"assets/count_book2.png?v=2", o:["two","four","ten"], a:0 },
+  { q:"How many bags?", img:"assets/count_bag4.png?v=2", o:["four","five","two"], a:0 },
+  { q:"How many erasers?", img:"assets/count_eraser8.png?v=2", o:["eight","seven","six"], a:0 },
+  { q:"How many chairs?", img:"assets/count_chair2.png?v=2", o:["two","three","ten"], a:0 },
+  { q:"How many pencils?", img:"assets/count_pencil5.png?v=2", o:["five","four","nine"], a:0 },
+  { q:"How many pencils?", img:"assets/count_pencil4.png?v=2", o:["four","five","seven"], a:0 },
 
   // --- a / an & arti kata ---
   { q:"This is ____ eraser. The correct word is ....", o:["an","a","two"], a:0 },
@@ -180,18 +180,18 @@ const MATCH_SETS = [
     ] },
   { key:"itempic", label:"Match the word with the picture", lc:"Word", rc:"Picture",
     auto:[
-      {l:"pen",r:"assets/pen.png"},{l:"pencil",r:"assets/pencil.png"},
-      {l:"ruler",r:"assets/ruler.png"},{l:"eraser",r:"assets/eraser.png"},
-      {l:"book",r:"assets/book.png"},{l:"map",r:"assets/map.png"},
-      {l:"glue",r:"assets/glue.png"},{l:"bag",r:"assets/bag.png"},
-      {l:"chair",r:"assets/chair.png"},{l:"table",r:"assets/table.png"}
+      {l:"pen",r:"assets/pen.png?v=2"},{l:"pencil",r:"assets/pencil.png?v=2"},
+      {l:"ruler",r:"assets/ruler.png?v=2"},{l:"eraser",r:"assets/eraser.png?v=2"},
+      {l:"book",r:"assets/book.png?v=2"},{l:"map",r:"assets/map.png?v=2"},
+      {l:"glue",r:"assets/glue.png?v=2"},{l:"bag",r:"assets/bag.png?v=2"},
+      {l:"chair",r:"assets/chair.png?v=2"},{l:"table",r:"assets/table.png?v=2"}
     ] },
   { key:"numcount", label:"Match the number with the picture", lc:"Number", rc:"Picture",
     auto:[
-      {l:"1",r:"assets/count_eraser1.png"},{l:"2",r:"assets/count_book2.png"},
-      {l:"3",r:"assets/count_glue3.png"},{l:"4",r:"assets/count_bag4.png"},
-      {l:"5",r:"assets/count_pencil5.png"},{l:"6",r:"assets/count_ruler6.png"},
-      {l:"7",r:"assets/count_ruler7.png"},{l:"8",r:"assets/count_eraser8.png"}
+      {l:"1",r:"assets/count_eraser1.png?v=2"},{l:"2",r:"assets/count_book2.png?v=2"},
+      {l:"3",r:"assets/count_glue3.png?v=2"},{l:"4",r:"assets/count_bag4.png?v=2"},
+      {l:"5",r:"assets/count_pencil5.png?v=2"},{l:"6",r:"assets/count_ruler6.png?v=2"},
+      {l:"7",r:"assets/count_ruler7.png?v=2"},{l:"8",r:"assets/count_eraser8.png?v=2"}
     ] }
 ];
 const MATCH_PAIRS = 4;   // jumlah pasangan tiap soal cocokkan
@@ -204,10 +204,10 @@ const FILL = [
   { t:"\"10\" in English is ____.", o:["ten","five","nine"], a:0 },
   { t:"\"____\" in English is 6.", o:["Six","Seven","Eight"], a:0 },
   { t:"\"____\" in English is 3.", o:["Three","Two","Eight"], a:0 },
-  { img:"assets/pen.png", t:"This is a ____.", o:["pen","pencil","glue"], a:0 },
-  { img:"assets/book.png", t:"This is a ____.", o:["book","bag","map"], a:0 },
-  { img:"assets/eraser.png", t:"This is ____ eraser.", o:["an","a","three"], a:0 },
-  { img:"assets/bag.png", t:"This is ____ bag.", o:["a","an","three"], a:0 },
+  { img:"assets/pen.png?v=2", t:"This is a ____.", o:["pen","pencil","glue"], a:0 },
+  { img:"assets/book.png?v=2", t:"This is a ____.", o:["book","bag","map"], a:0 },
+  { img:"assets/eraser.png?v=2", t:"This is ____ eraser.", o:["an","a","three"], a:0 },
+  { img:"assets/bag.png?v=2", t:"This is ____ bag.", o:["a","an","three"], a:0 },
   { t:"I write with a ____.", o:["pencil","chair","map"], a:0 },
   { t:"I erase my mistake with an ____.", o:["eraser","ruler","clock"], a:0 },
   { t:"I draw a straight line with a ____.", o:["ruler","glue","bag"], a:0 },
@@ -219,11 +219,11 @@ const FILL = [
   { t:"We look at a ____ to see countries and cities.", o:["map","ruler","book"], a:0 },
   { t:"The ____ on the wall shows the time.", o:["clock","eraser","glue"], a:0 },
   { t:"My pencil is blunt. I need a ____.", o:["sharpener","stapler","clock"], a:0 },
-  { img:"assets/count_pencil5.png", t:"There are ____ pencils.", o:["five","four","seven"], a:0 },
-  { img:"assets/count_book7.png", t:"There are ____ books.", o:["seven","six","nine"], a:0 },
-  { img:"assets/count_eraser8.png", t:"There are ____ erasers.", o:["eight","six","three"], a:0 },
-  { img:"assets/count_chair2.png", t:"There are ____ chairs.", o:["two","four","ten"], a:0 },
-  { img:"assets/count_bag3.png", t:"There are ____ bags.", o:["three","four","two"], a:0 }
+  { img:"assets/count_pencil5.png?v=2", t:"There are ____ pencils.", o:["five","four","seven"], a:0 },
+  { img:"assets/count_book7.png?v=2", t:"There are ____ books.", o:["seven","six","nine"], a:0 },
+  { img:"assets/count_eraser8.png?v=2", t:"There are ____ erasers.", o:["eight","six","three"], a:0 },
+  { img:"assets/count_chair2.png?v=2", t:"There are ____ chairs.", o:["two","four","ten"], a:0 },
+  { img:"assets/count_bag3.png?v=2", t:"There are ____ bags.", o:["three","four","two"], a:0 }
 ];
 
 window.ENGLISH_DATA = { MATERI, MCQ, BENARSALAH, RIDDLE, MATCH_SETS, MATCH_PAIRS, FILL, shuffle, pickN };
