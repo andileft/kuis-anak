@@ -1,0 +1,161 @@
+/* ===== Kuis Bahasa Indonesia — Bab 2 Mari Bermain ===== */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg1: #ffe8b3;
+  --bg2: #b8e6ff;
+  --gold: #f4a62a;
+  --gold-d: #c98213;
+  --sky: #3a9fe0;
+  --sky-d: #2a78b0;
+  --green: #38b000;
+  --green-d: #2b8a00;
+  --red: #e5383b;
+  --ink: #333;
+  --card: #ffffff;
+  --radius: 22px;
+}
+
+html, body {
+  margin:0; padding:0; height:100%;
+  font-family: "Baloo 2","Fredoka","Comic Sans MS","Segoe UI",system-ui,sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg1), var(--bg2));
+  touch-action: manipulation; overflow: hidden;
+  overscroll-behavior: none; /* cegah pull-to-refresh saat anak menggulir */
+}
+#app { height:100%; width:100%; }
+
+.screen {
+  position:fixed; inset:0; display:none; flex-direction:column;
+  max-width: 640px; margin:0 auto; padding:14px;
+}
+.screen.active { display:flex; animation: fadeIn .3s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:none;} }
+
+/* ---------- HOME ---------- */
+.home-wrap { margin:auto; text-align:center; width:100%; padding:10px 0; }
+.mascot { font-size:90px; line-height:1; margin-bottom:6px; display:inline-block; animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+.title { font-size:40px; margin:6px 0 0; color:var(--gold); text-shadow:2px 3px 0 rgba(255,255,255,.8); }
+.subtitle { font-size:19px; margin:8px 0 4px; font-weight:700; }
+.zh { font-size:14px; color:#777; line-height:1.4; }
+
+.home-count { margin:20px 0 6px; font-size:18px; font-weight:800; }
+.count-btns { display:flex; gap:10px; justify-content:center; margin-top:8px; }
+.count-btns button {
+  width:56px; height:56px; border:none; border-radius:16px;
+  font-size:22px; font-weight:800; color:#fff; background:var(--sky);
+  box-shadow:0 4px 0 var(--sky-d); cursor:pointer;
+}
+.count-btns button.sel { background:var(--gold); box-shadow:0 4px 0 var(--gold-d); transform:scale(1.08); }
+
+.big-btn {
+  display:block; width:min(88%,380px); margin:14px auto; padding:18px; border:none;
+  border-radius:20px; font-size:25px; font-weight:800; color:#fff; cursor:pointer;
+}
+.big-btn:active{transform:scale(.96);}
+.big-btn.primary { background:linear-gradient(180deg,var(--gold),var(--gold-d)); box-shadow:0 6px 0 var(--gold-d); }
+.big-btn.secondary { background:linear-gradient(180deg,var(--sky),var(--sky-d)); box-shadow:0 6px 0 var(--sky-d); }
+
+/* ---------- TOPBAR / HUD ---------- */
+.topbar { display:flex; align-items:center; gap:10px; background:var(--card); border-radius:18px; padding:10px 12px; box-shadow:0 3px 8px rgba(0,0,0,.08); margin-bottom:10px; }
+.icon-btn { width:48px; height:48px; border:none; border-radius:14px; background:#f1f3f5; font-size:24px; cursor:pointer; }
+.topbar-title { flex:1; text-align:center; font-size:20px; font-weight:800; }
+.topbar-spacer { width:48px; }
+
+.hud { display:flex; align-items:center; gap:8px; min-width:90px; justify-content:center; }
+.hud-score { font-size:26px; font-weight:900; color:var(--sky); background:#eaf5ff; padding:2px 14px; border-radius:12px; }
+.hud-streak { font-size:22px; }
+.hud-progress { flex:1; height:14px; background:#eee; border-radius:8px; overflow:hidden; }
+.hud-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--green),#7bdb3f); border-radius:8px; transition:width .4s ease; }
+
+/* ---------- QUIZ ---------- */
+.quiz-body { display:flex; flex-direction:column; flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; touch-action:pan-y; overscroll-behavior:contain; padding-bottom:16px; }
+.q-meta { display:flex; justify-content:space-between; padding:2px 6px 6px; }
+.q-num { font-weight:800; font-size:17px; color:#666; }
+.q-type { font-weight:800; font-size:15px; color:var(--gold); }
+
+.q-prompt { font-size:21px; font-weight:800; text-align:center; margin:4px 0 8px; line-height:1.3; }
+.q-prompt .src { font-size:14px; font-weight:600; color:#999; display:block; margin-top:3px; }
+
+.q-main { background:var(--card); border-radius:var(--radius); padding:12px; flex:0 0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.08); min-height:96px; gap:8px; }
+.q-img { max-width:100%; max-height:170px; border-radius:14px; object-fit:contain; }
+
+.options { display:grid; gap:10px; grid-template-columns:1fr; margin-top:12px; }
+.opt {
+  padding:16px 14px; border:3px solid transparent; border-radius:16px;
+  background:var(--card); font-size:20px; font-weight:800; color:var(--ink);
+  cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.12); display:flex; align-items:center; gap:10px;
+}
+.opt .em{ font-size:30px; }
+.opt:active{transform:scale(.97);}
+.opt.correct{background:var(--green);color:#fff;animation:pop .4s ease;box-shadow:0 4px 0 var(--green-d);}
+.opt.wrong{background:var(--red);color:#fff;animation:shake .4s ease;box-shadow:0 4px 0 #b02328;}
+.opt.disabled{pointer-events:none;opacity:.75;}
+@keyframes pop{0%{transform:scale(.3);opacity:0;}60%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+
+/* benar-salah dua tombol besar */
+.options.two { grid-template-columns:1fr 1fr; }
+.opt.two-opt { min-height:90px; font-size:24px; justify-content:center; }
+
+/* ---------- TEKA-TEKI ---------- */
+.riddle-box { text-align:center; width:100%; }
+.riddle-question { font-size:20px; font-weight:700; line-height:1.4; }
+
+/* ---------- COCOKKAN (drag) ---------- */
+.match-info { text-align:center; font-size:14px; font-weight:700; color:#666; margin:2px 0 6px; }
+.match-wrap { display:flex; gap:10px; min-height:0; }
+.match-col { flex:1; display:flex; flex-direction:column; gap:8px; }
+.match-col .col-label { text-align:center; font-weight:800; font-size:14px; color:var(--gold); margin-bottom:2px; }
+.match-left .item, .match-right .item {
+  padding:9px 8px; border-radius:12px; font-weight:800; text-align:center;
+  background:var(--card); box-shadow:0 3px 0 rgba(0,0,0,.12); cursor:pointer; user-select:none;
+  font-size:15px; line-height:1.2; min-height:46px; display:flex; align-items:center; justify-content:center;
+}
+.match-right .item{ background:#fdf6e3; font-size:20px; }
+.match-left .item.sel { background:var(--gold); color:#fff; transform:scale(1.04); box-shadow:0 4px 0 var(--gold-d); }
+.match-left .item.done, .match-right .item.done { background:var(--green)!important; color:#fff; cursor:default; box-shadow:0 3px 0 var(--green-d); }
+.item.err-anim { animation:shake .3s ease; }
+.match-col .item.has-img { background:#fff; padding:5px; }
+.match-col .item.has-img img { max-height:52px; max-width:100%; display:block; margin:0 auto; }
+
+/* ---------- FEEDBACK ---------- */
+.feedback { min-height:52px; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; margin-top:8px; gap:6px; }
+.fb-good{color:var(--green);} .fb-bad{color:var(--red);}
+.fb-sticker{font-size:36px;}
+
+/* ---------- RESULT ---------- */
+.result-wrap{margin:auto;text-align:center;width:100%;}
+
+/* ---------- MATERI ---------- */
+.ayat-body { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:14px; padding:4px 2px; -webkit-overflow-scrolling:touch; touch-action:pan-y; overscroll-behavior:contain; }
+.ayat-card {
+  background:var(--card); border-radius:var(--radius); padding:18px 16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.ayat-card h3 { margin:0 0 6px; font-size:18px; color:var(--gold); }
+.ayat-card .verse { font-size:17px; line-height:1.5; font-weight:600; }
+.ayat-card .ref { font-size:14px; color:#999; font-weight:700; margin-top:6px; }
+.ayat-card .contoh-box { margin-top:10px; background:#fdf6e3; border-radius:14px; padding:10px 12px; }
+.ayat-card .contoh-title { font-size:12px; font-weight:800; color:var(--gold-d); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+.ayat-card .contoh-line { font-size:16px; font-weight:700; line-height:1.45; }
+.ayat-card .listen { margin-top:10px; padding:10px 16px; border:none; border-radius:12px; background:var(--sky); color:#fff; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 3px 0 var(--sky-d); }
+
+.result-stars{font-size:62px;letter-spacing:6px;line-height:1.2;}
+.result-title{font-size:34px;margin:6px 0 2px;color:var(--gold);}
+.result-score{font-size:32px;font-weight:900;color:var(--sky);margin:6px 0;}
+.result-stats{font-size:19px;font-weight:700;color:#555;margin-bottom:18px;}
+.result-score .big{font-size:54px;}
+
+/* ---------- CONFETTI ---------- */
+.confetti{position:fixed;width:12px;height:12px;z-index:999;pointer-events:none;border-radius:3px;top:-20px;}
+.confetti.piece{animation:fall linear forwards;}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);}}
+
+@media (max-width:420px){
+  .title{font-size:32px;} .mascot{font-size:78px;}
+  .q-prompt{font-size:19px;}
+  .opt{font-size:18px;}
+}
