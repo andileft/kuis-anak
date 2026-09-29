@@ -186,12 +186,12 @@ const MATCH_SETS = [
       {l:"glue",r:"assets/glue.png?v=2"},{l:"bag",r:"assets/bag.png?v=2"},
       {l:"chair",r:"assets/chair.png?v=2"},{l:"table",r:"assets/table.png?v=2"}
     ] },
-  { key:"numcount", label:"Match the number with the picture", lc:"Number", rc:"Picture",
+  { key:"numcount", label:"Match the number word with the picture", lc:"Word", rc:"Picture",
     auto:[
-      {l:"1",r:"assets/count_eraser1.png?v=2"},{l:"2",r:"assets/count_book2.png?v=2"},
-      {l:"3",r:"assets/count_glue3.png?v=2"},{l:"4",r:"assets/count_bag4.png?v=2"},
-      {l:"5",r:"assets/count_pencil5.png?v=2"},{l:"6",r:"assets/count_ruler6.png?v=2"},
-      {l:"7",r:"assets/count_ruler7.png?v=2"},{l:"8",r:"assets/count_eraser8.png?v=2"}
+      {l:"one",r:"assets/count_eraser1.png?v=2"},{l:"two",r:"assets/count_book2.png?v=2"},
+      {l:"three",r:"assets/count_glue3.png?v=2"},{l:"four",r:"assets/count_bag4.png?v=2"},
+      {l:"five",r:"assets/count_pencil5.png?v=2"},{l:"six",r:"assets/count_ruler6.png?v=2"},
+      {l:"seven",r:"assets/count_ruler7.png?v=2"},{l:"eight",r:"assets/count_eraser8.png?v=2"}
     ] }
 ];
 const MATCH_PAIRS = 4;   // jumlah pasangan tiap soal cocokkan
