@@ -4,6 +4,45 @@
 
 /* ---------- data access ---------- */
 const D = window.ETP_DATA;
+
+/* ---------- KUNCI KONSEP (anti soal kembar dalam 1 sesi) ----------
+   Banyak fakta muncul di lebih dari satu bank soal: "keinginan bisa ditunda"
+   ada sebagai pilihan ganda, lengkapi, benar/salah, dan teka-teki. Tanpa
+   penanda, satu sesi bisa menanyakan fakta yang sama 2-3 kali.
+   KEYS = kunci konsep per bank, URUT sesuai urutan soal di data.js.
+   buildQuiz() hanya memakai SATU soal per kunci per sesi.
+   Kalau panjang array tidak cocok (data.js diubah tanpa update di sini),
+   kunci dihitung dari teks soal supaya tetap tidak ada yang kembar. */
+const KEYS={
+  MCQ:["def-kebutuhan","contoh-primer","contoh-sekunder","kebiasaan-berbeda","nonbarang",
+       "contoh-keinginan","belanja-pertanyaan","alat-belajar-sekunder","kenal-kebiasaan-tujuan",
+       "sikap-keluarga","def-kebiasaan","kebiasaan-beda-2","kebiasaan-berbeda","kebiasaan-beda-2",
+       "def-kebutuhan","contoh-primer","contoh-sekunder","primer-def","sekunder-def","tabel-nasi",
+       "tabel-boneka","tabel-rumah","tabel-sepeda","primer-didahulukan","contoh-keinginan",
+       "tabel-rumah","def-keinginan","keinginan-ditunda","keinginan-ditunda","gambar-keluarga-makan",
+       "gambar-sepeda-ingin","gambar-sepeda-ingin"],
+  BENARSALAH:["def-kebutuhan","mainan-bukan-primer","primer-didahulukan","keinginan-ditunda",
+       "kebiasaan-beda-2","kenal-kebiasaan-tujuan","kebiasaan-berbeda","kebiasaan-berbeda",
+       "contoh-primer","contoh-sekunder","sekunder-def","alat-belajar-sekunder","nonbarang",
+       "contoh-keinginan","tabel-seragam","tabel-rumah","belanja-pertanyaan","sikap-keluarga",
+       "kebiasaan-berbeda","paksa-kebiasaan","sekunder-def","contoh-keinginan"],
+  RIDDLE:["def-kebutuhan","primer-def","sekunder-def","def-keinginan","def-kebiasaan","nonbarang",
+       "alat-belajar-sekunder","contoh-primer","belanja-pertanyaan","contoh-sekunder"],
+  FILL:["def-kebutuhan","contoh-primer","contoh-sekunder","kebiasaan-berbeda","nonbarang",
+       "contoh-keinginan","primer-def","sekunder-def","keinginan-ditunda","alat-belajar-sekunder",
+       "kenal-kebiasaan-tujuan","sikap-keluarga","contoh-primer","contoh-sekunder",
+       "belanja-pertanyaan","belanja-bijak","kebiasaan-berbeda","contoh-keinginan"]
+};
+function conceptKey(bank,item,i){
+  const list=KEYS[bank];
+  if(list&&list.length===D[bank].length&&list[i])return list[i];
+  // fallback: kunci dari teks soal (soal berbeda => kunci berbeda)
+  const t=String(item.q||item.t||item.s||item.d||"").toLowerCase().replace(/_{2,}|\.{2,}|[^a-z0-9]+/g," ").trim();
+  return bank+"#"+t;
+}
+function normKey(s){
+  return String(s||"").toLowerCase().replace(/_{2,}|\.{2,}|[^a-z0-9]+/g," ").trim();
+}
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
@@ -140,24 +179,48 @@ function buildMatchVariants(){
    Setiap unit "pop" dari kolam sehingga TIDAK PERNAH berulang dalam 1 sesi. */
 function buildQuiz(){
   const matchVariants=buildMatchVariants();
+  const unit=(type,item,k)=>({type,item,k});
   const pools=[
-    D.shuffle(D.MCQ.map(item=>({type:"mcq",item}))),
-    D.shuffle(D.BENARSALAH.map(item=>({type:"bs",item}))),
-    D.shuffle(D.RIDDLE.map(item=>({type:"riddle",item}))),
-    D.shuffle(matchVariants.map(item=>({type:"match",item}))),
-    D.shuffle(D.FILL.map(item=>({type:"fill",item})))
+    D.shuffle(D.MCQ.map((item,i)=>unit("mcq",item,conceptKey("MCQ",item,i)))),
+    D.shuffle(D.BENARSALAH.map((item,i)=>unit("bs",item,conceptKey("BENARSALAH",item,i)))),
+    D.shuffle(D.RIDDLE.map((item,i)=>unit("riddle",item,conceptKey("RIDDLE",item,i)))),
+    D.shuffle(matchVariants.map(v=>unit("match",v,"match:"+normKey(v.set.key)))),
+    D.shuffle(D.FILL.map((item,i)=>unit("fill",item,conceptKey("FILL",item,i))))
   ];
+  const used=new Set();
   const picked=[];
+  // Ambil dari ujung kolam. Dengan kunci: soal yang konsepnya sudah terpakai dibuang.
+  function take(pool,respectKeys){
+    while(pool.length){
+      const u=pool[pool.length-1];
+      if(respectKeys && used.has(u.k)){ pool.pop(); continue; }
+      pool.pop(); used.add(u.k);
+      return u;
+    }
+    return null;
+  }
   while(picked.length<quiz.total){
     let dealt=false;
     for(const pool of pools){
-      if(pool.length && picked.length<quiz.total){
-        picked.push(pool.pop()); dealt=true;
-      }
+      if(picked.length>=quiz.total) break;
+      const u=take(pool,true);
+      if(u){picked.push(u);dealt=true;}
     }
-    if(!dealt) break; // semua kolam habis
+    if(!dealt) break; // semua kolam habis (soal berkonsep sama sudah ditebus)
   }
-  quiz.qs=D.shuffle(picked.map(u=>makeQuestion(u.type,u.item)));
+  // Kalau kolam unik habis, isi sisanya tanpa batasan konsep — sesi tidak boleh berhenti lebih awal.
+  if(picked.length<quiz.total){
+    while(picked.length<quiz.total){
+      let dealt=false;
+      for(const pool of pools){
+        if(picked.length>=quiz.total) break;
+        const u=take(pool,false);
+        if(u){picked.push(u);dealt=true;}
+      }
+      if(!dealt) break;
+    }
+  }
+  quiz.qs=D.shuffle(picked.map(u=>{const q=makeQuestion(u.type,u.item); q.k=u.k; return q;}));
 }
 
 function makeQuestion(type,picked){
@@ -196,6 +259,7 @@ function renderQuestion(){
     riddle:"Teka-teki",match:"Cocokkan (seret/tap)",fill:"Lengkapi"
   };
   $("#qType").textContent=TYPE_LABEL[q.type]||"";
+  document.body.dataset.qkey=q.k||"";   // kunci konsep (dipakai uji anti-soal-kembar)
 
   const prompt=$("#qPrompt");
   const main=$("#qMain");
