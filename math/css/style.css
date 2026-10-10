@@ -109,8 +109,7 @@ html, body {
 .riddle-box { text-align:center; width:100%; }
 .riddle-question { font-size:20px; font-weight:700; line-height:1.4; }
 .cerita-box { width:100%; text-align:left; }
-.cerita-text { font-size:17px; font-weight:700; line-height:1.4; }
-.cerita-hint { margin-top:6px; padding:6px 9px; background:#fdf6e3; border-radius:12px; font-size:12px; font-weight:600; color:#666; line-height:1.35; }
+.cerita-text { font-size:19px; font-weight:700; line-height:1.45; }
 
 /* ---------- COCOKKAN (drag) ---------- */
 .match-info { text-align:center; font-size:14px; font-weight:700; color:#666; margin:2px 0 6px; }

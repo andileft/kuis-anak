@@ -338,8 +338,7 @@ function renderQuestion(){
   else if(q.type==="cerita"){
     prompt.innerHTML="<b>Soal Cerita 📖</b>";
     main.innerHTML=(q.vis?visHtml(q.vis):"")+
-      `<div class="cerita-box"><div class="cerita-text">${q.prompt}</div>`+
-      `<div class="cerita-hint">Ingat: "diberi lagi / datang lagi" = tambah (+). "mati / hilang / dimakan / terbang pergi" = kurang (−).</div></div>`;
+      `<div class="cerita-box"><div class="cerita-text">${q.prompt}</div></div>`;
     const list=q.options.map(o=>({text:()=>o.txt,correct:o.correct}));
     buildOptions(list);
   }
