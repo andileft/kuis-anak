@@ -3,10 +3,27 @@
 "use strict";
 
 /* ---------- data access ---------- */
-const D = window.AGAMA_DATA;
+let D = window.AGAMA_UNITS[0].data;
+let UNIT = window.AGAMA_UNITS[0];
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
+
+/* ---------- pilih bab ---------- */
+function setUnit(u){
+  UNIT=u; D=u.data;
+  $$("#chapterBtns button").forEach(b=>b.classList.toggle("sel",b.dataset.id===u.id));
+  document.querySelector("#screen-home .subtitle").textContent=u.sub;
+  document.querySelector("#screen-home .zh").textContent=u.zh;
+}
+
+/* ---------- pilih bab ---------- */
+document.addEventListener("click",(e)=>{
+  const b=e.target.closest("#chapterBtns button");
+  if(!b)return;
+  const u=window.AGAMA_UNITS.find(x=>x.id===b.dataset.id);
+  if(u){setUnit(u);FX.click();}
+});
 
 function show(id){
   $$(".screen").forEach(s=>s.classList.remove("active"));
@@ -76,14 +93,15 @@ const AYAT=[
 ];
 function openAyat(){
   stopSpeak();
-  $("#ayatBody").innerHTML=AYAT.map((a,i)=>`
+  const A=UNIT.ayat;
+  $("#ayatBody").innerHTML=A.map((a,i)=>`
     <div class="ayat-card">
       <h3>${a.t}</h3>
       <div class="verse">${a.v}</div>
       <div class="ref">— ${a.r}</div>
       <button class="listen" data-i="${i}">🔊 Dengar</button>
     </div>`).join("");
-  $$("#ayatBody .listen").forEach(b=>b.addEventListener("click",()=>{ensureAudio();speak(AYAT[+b.dataset.i].v);}));
+  $$("#ayatBody .listen").forEach(b=>b.addEventListener("click",()=>{ensureAudio();speak(A[+b.dataset.i].v);}));
   show("screen-ayat");
 }
 $("#btnAyat").addEventListener("click",()=>{ensureAudio();FX.click();openAyat();});
@@ -272,7 +290,7 @@ function renderQuestion(){
     buildOptions(list);
   }
   else if(q.type==="match"){
-    prompt.innerHTML="Seret / tap untuk mencocokkan anggota tubuh dengan fungsinya";
+    prompt.innerHTML=UNIT.matchPrompt;
     main.style.display="none"; // match pakai area options penuh
     renderMatch(q);
     return;
@@ -285,8 +303,8 @@ function renderQuestion(){
     wrap.className="match-wrap";
     const colL=document.createElement("div");colL.className="match-col match-left";
     const colR=document.createElement("div");colR.className="match-col match-right";
-    colL.innerHTML="<div class='col-label'>Anggota Tubuh</div>";
-    colR.innerHTML="<div class='col-label'>Fungsi</div>";
+    colL.innerHTML="<div class='col-label'>"+(D.colL||"Anggota Tubuh")+"</div>";
+    colR.innerHTML="<div class='col-label'>"+(D.colR||"Fungsi")+"</div>";
     wrap.appendChild(colL);wrap.appendChild(colR);
     opt.appendChild(wrap);
 
@@ -446,7 +464,9 @@ $("#btnAgain").addEventListener("click",()=>{FX.click();startQuiz();});
 $("#btnHome").addEventListener("click",()=>{FX.click();show("screen-home");});
 
 /* ---------- prevent zoom/pull refresh ---------- */
-document.addEventListener("touchmove",e=>{e.preventDefault();},{passive:false});
+document.addEventListener("touchmove",e=>{
+  if(e.touches&&e.touches.length>1)e.preventDefault(); /* blokir pinch saja, biarkan scroll */
+},{passive:false});
 document.addEventListener("gesturestart",e=>e.preventDefault());
 window.addEventListener("load",()=>{ensureAudio();});
 })();
