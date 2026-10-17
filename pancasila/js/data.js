@@ -107,4 +107,81 @@ const MATCH_SCHEMAS = [
     l:"s",                      r:"t" }
 ];
 
+/* ======================================================= */
+/* ===== BAB 2 : Aturan di Rumah dan di Sekolah ========== */
+/* Sumber: LKPD BAB 2 P.PANCASILA (Quintal, terbit 15/10/2026
+   — "Membedakan Aturan di Rumah dan di Sekolah").
+   Sumatif bab 2: Rabu 21 Oktober 2026.                    */
+/* ======================================================= */
+
+const BANK2 = [
+  { q:"Mencuci piring setelah makan adalah aturan di ____.",
+    o:["rumah","sekolah","taman"], a:0, mode:"both" },
+  { q:"Memakai seragam sekolah lengkap adalah aturan di ____.",
+    o:["sekolah","rumah","kamar mandi"], a:0, mode:"both" },
+  { q:"Mematikan TV sebelum tidur malam adalah aturan di ____.",
+    o:["rumah","sekolah","kelas"], a:0, mode:"both" },
+  { q:"Mengacungkan tangan saat mau bicara adalah aturan di ____.",
+    o:["sekolah","rumah","kamar tidur"], a:0, mode:"both" },
+  { q:"Merapikan tempat tidur sendiri dilakukan di ____.",
+    o:["rumah","sekolah","halaman sekolah"], a:0, mode:"both" },
+  { q:"Berbaris sebelum masuk kelas dilakukan di ____.",
+    o:["sekolah","warung","kamar mandi"], a:0, mode:"both" },
+  { q:"Minta izin kepada guru sebelum keluar kelas adalah aturan di ____.",
+    o:["sekolah","rumah","warung"], a:0, mode:"both" },
+  { q:"Berbaris tidak biasa dilakukan di rumah karena ____.",
+    o:["jumlah orangnya lebih banyak sehingga harus rapi dan teratur","di rumah tidak ada pintu","di rumah tidak ada teman"], a:0, mode:"mcq" },
+  { q:"Jika di sekolah atau di rumah tidak ada aturan, hidup kita akan ____.",
+    o:["kacau dan tidak aman","lebih menyenangkan","tidak berubah"], a:0, mode:"both" },
+  { q:"Dengan mematuhi aturan, hidup kita menjadi ____.",
+    o:["tertib, aman, dan menyenangkan","bebas, ramai, dan ribut","malas, lambat, dan capek"], a:0, mode:"both" },
+  { q:"Sikap kita terhadap aturan di rumah dan di sekolah adalah ____.",
+    o:["mematuhinya","memilih yang enak saja","mengabaikannya"], a:0, mode:"both" },
+  { q:"Upacara bendera hari Senin adalah aturan di ____.",
+    o:["sekolah","rumah","pasar"], a:0, mode:"mcq" },
+  { q:"Semua orang mematuhi aturan agar sekolah dan rumah menjadi ____.",
+    o:["tertib dan nyaman","tambah ramai","tambah berat"], a:0, mode:"mcq" },
+  { q:"Aturan di rumah dibuat oleh ____.",
+    o:["ayah dan ibu bersama keluarga","teman sekolah","penjaga toko"], a:0, mode:"mcq" },
+  { q:"Aturan di rumah dan di sekolah sama-sama harus kita ____.",
+    o:["patuhi","tanyakan","tolak"], a:0, mode:"both" }
+];
+
+/* Klasifikasi LKPD (MENGAPLIKASI): kegiatan -> tempat aturannya */
+const RULES = [
+  { i:1,  a:"Mencuci piring setelah makan",                 t:"Rumah" },
+  { i:2,  a:"Memakai seragam sekolah lengkap",              t:"Sekolah" },
+  { i:3,  a:"Mematikan TV sebelum tidur malam",              t:"Rumah" },
+  { i:4,  a:"Mengacungkan tangan saat mau bicara",          t:"Sekolah" },
+  { i:5,  a:"Merapikan tempat tidur sendiri",               t:"Rumah" },
+  { i:6,  a:"Berbaris sebelum masuk kelas",                 t:"Sekolah" },
+  { i:7,  a:"Membersihkan papan tulis kelas",               t:"Sekolah" },
+  { i:8,  a:"Menyapu lantai rumah",                         t:"Rumah" },
+  { i:9,  a:"Duduk tenang saat guru menjelaskan",           t:"Sekolah" },
+  { i:10, a:"Mencium tangan ayah dan ibu sebelum berangkat", t:"Rumah" }
+];
+
+const BELAJAR2 = [
+  { t:"🏠 Aturan di Rumah", d:"Contoh: mencuci piring setelah makan, mematikan TV sebelum tidur, merapikan tempat tidur sendiri, menyapu lantai, dan mencium tangan ayah serta ibu sebelum berangkat." },
+  { t:"🏫 Aturan di Sekolah", d:"Contoh: memakai seragam lengkap, berbaris sebelum masuk kelas, mengacungkan tangan saat mau bicara, minta izin sebelum keluar kelas, dan duduk tenang saat guru menjelaskan." },
+  { t:"❓ Mengapa Ada Aturan?", d:"Aturan membuat hidup kita tertib, aman, dan menyenangkan. Kalau tidak ada aturan, hidup menjadi kacau dan tidak aman." },
+  { t:"💪 Tugasku", d:"Mematuhi aturan di rumah dan di sekolah adalah bentuk tanggung jawabku sebagai anak yang baik." }
+];
+
+/* Unit data per bab: engine dan home screen membaca ini */
+window.PANCASILA_UNITS = [
+  { id:"bab1", label:"Bab 1 · Aku Cinta Indonesia",
+    sub:"Aku Bangga Menjadi Anak Indonesia",
+    zh:"Garuda Pancasila • 5 Sila • Lambangnya",
+    kind:"sila",
+    data:{ SILA:SILA, BANK:BANK, MATCH_SCHEMAS:MATCH_SCHEMAS, shuffle:shuffle, pickN:pickN },
+    belajar:"sila" },
+  { id:"bab2", label:"Bab 2 · Aturan di Rumah & Sekolah",
+    sub:"Membedakan Aturan di Rumah dan di Sekolah",
+    zh:"Aturan di Rumah • Aturan di Sekolah • Hidup Tertib",
+    kind:"rules",
+    data:{ RULES:RULES, BANK:BANK2, BELAJAR:BELAJAR2, shuffle:shuffle, pickN:pickN },
+    belajar:"aturan" }
+];
+
 window.PANCASILA_DATA = { SILA, BANK, MATCH_SCHEMAS, shuffle, pickN };

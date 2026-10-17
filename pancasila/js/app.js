@@ -3,10 +3,25 @@
 "use strict";
 
 /* ---------- data access ---------- */
-const D = window.PANCASILA_DATA;
+let D = window.PANCASILA_UNITS[0].data;
+let UNIT = window.PANCASILA_UNITS[0];
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
+
+/* ---------- pilih bab ---------- */
+function setUnit(u){
+  UNIT=u; D=u.data;
+  $$("#chapterBtns button").forEach(b=>b.classList.toggle("sel",b.dataset.id===u.id));
+  document.querySelector("#screen-home .subtitle").textContent=u.sub;
+  document.querySelector("#screen-home .zh").textContent=u.zh;
+}
+document.addEventListener("click",(e)=>{
+  const b=e.target.closest("#chapterBtns button");
+  if(!b)return;
+  const u=window.PANCASILA_UNITS.find(x=>x.id===b.dataset.id);
+  if(u){setUnit(u);FX.click();}
+});
 
 function show(id){
   $$(".screen").forEach(s=>s.classList.remove("active"));
@@ -77,7 +92,9 @@ function facetHtml(sila,facet){
   return "";
 }
 function openBelajar(){
-  $("#belajarBody").innerHTML=D.SILA.map(s=>
+  let html="";
+  if(UNIT.belajar==="sila"){
+    html=D.SILA.map(s=>
     `<div class="ayat-card sila-card">
        <div class="sila-top">
          <span class="sila-num">${s.n}</span>
@@ -86,6 +103,14 @@ function openBelajar(){
        <h3>${s.t}</h3>
        <div class="ref">Lambang: ${s.m}</div>
      </div>`).join("");
+  }else{
+    html=D.BELAJAR.map(b=>
+    `<div class="ayat-card">
+       <h3>${b.t}</h3>
+       <div class="verse" style="font-size:15px;quotes:none">${b.d}</div>
+     </div>`).join("");
+  }
+  $("#belajarBody").innerHTML=html;
   stopSpeak();show("screen-belajar");
 }
 $("#btnBelajar").addEventListener("click",()=>{ensureAudio();FX.click();openBelajar();});
@@ -117,11 +142,30 @@ function matchQuestionForSchema(schema){
   return {type:"match",schema,left,right,silaMap};
 }
 
+/* Match bab 2: klasifikasi kegiatan -> Rumah/Sekolah (LKPD MENGAPLIKASI).
+   4 pasangan unik per soal, dipilih dari bank RULES. */
+function rulesMatchQuestion(sub){
+  const left=D.shuffle(sub.map(function(p){return {key:String(p.i),html:p.a};}));
+  const right=D.shuffle(sub.map(function(p){return {key:String(p.i),html:p.t};}));
+  return {type:"match",rules:true,left,right,leftLabel:"Kegiatan",rightLabel:"Rumah / Sekolah?"};
+}
+function rulesMatchVariants(){
+  const seen=new Set(); const vs=[];
+  for(let attempt=0; attempt<200 && vs.length<4; attempt++){
+    const sub=D.pickN(D.RULES,4);
+    const key=sub.map(p=>p.i).sort().join("|");
+    if(!seen.has(key)){seen.add(key);vs.push(sub);}
+  }
+  return vs;
+}
+
 /* Satu bank soal (unika( + kolam match; dipop sehingga tiap pertanyaan
    TIDAK PERNAH berulang dalam 1 sesi. "both" diacak jadi PG/Lengkapi. */
 function buildQuiz(){
   let bank=D.shuffle(D.BANK.map(function(it){return {type:it.mode==="both"?(Math.random()<0.5?"mcq":"fill"):it.mode,item:it};}));
-  const matchPool=D.shuffle(D.MATCH_SCHEMAS.map(function(sc){return {type:"match",sc};}));
+  let matchPool;
+  if(UNIT.kind==="sila") matchPool=D.shuffle(D.MATCH_SCHEMAS.map(function(sc){return {type:"match",sc};}));
+  else matchPool=D.shuffle(rulesMatchVariants().map(function(sub){return {type:"match",rulesSub:sub};}));
   const MATCH_MAX=2; // maksimal 2 soal matching per sesi
   const picked=[];
   let matchUsed=0;
@@ -131,7 +175,10 @@ function buildQuiz(){
     if(matchPool.length && matchUsed<MATCH_MAX && picked.length<quiz.total){picked.push(matchPool.pop());matchUsed++;dealt=true;}
     if(!dealt) break; // bank habis
   }
-  quiz.qs=D.shuffle(picked.map(function(u){return u.type==="match"?matchQuestionForSchema(u.sc):makeQuestion(u.type,u.item);}));
+  quiz.qs=D.shuffle(picked.map(function(u){
+    if(u.type==="match") return (u.sc!==undefined)?matchQuestionForSchema(u.sc):rulesMatchQuestion(u.rulesSub);
+    return makeQuestion(u.type,u.item);
+  }));
 }
 
 function makeQuestion(type,picked){
@@ -243,7 +290,7 @@ function renderQuestion(){
     buildOptions(list);
   }
   else if(q.type==="match"){
-    prompt.innerHTML=q.schema.label;
+    prompt.innerHTML=q.rules?"Cocokkan kegiatan dengan tempat aturannya":q.schema.label;
     main.style.display="none"; // match pakai area options penuh
     renderMatch(q);
     return;
@@ -256,8 +303,8 @@ function renderQuestion(){
     wrap.className="match-wrap";
     const colL=document.createElement("div");colL.className="match-col match-left";
     const colR=document.createElement("div");colR.className="match-col match-right";
-    colL.innerHTML="<div class='col-label'>"+FACET_LABEL[q.schema.l]+"</div>";
-    colR.innerHTML="<div class='col-label'>"+FACET_LABEL[q.schema.r]+"</div>";
+    colL.innerHTML="<div class='col-label'>"+(q.rules?q.leftLabel:FACET_LABEL[q.schema.l])+"</div>";
+    colR.innerHTML="<div class='col-label'>"+(q.rules?q.rightLabel:FACET_LABEL[q.schema.r])+"</div>";
     wrap.appendChild(colL);wrap.appendChild(colR);
     opt.appendChild(wrap);
 
@@ -265,13 +312,13 @@ function renderQuestion(){
     q.left.forEach(o=>{
           const it=document.createElement("div");
           it.className="item";it.dataset.key=o.key;
-          it.innerHTML=facetHtml(q.silaMap[o.key],o.facet);
+          it.innerHTML=q.rules?o.html:facetHtml(q.silaMap[o.key],o.facet);
           colL.appendChild(it);
         });
         q.right.forEach(o=>{
           const it=document.createElement("div");
           it.className="item";it.dataset.key=o.key;
-          it.innerHTML=facetHtml(q.silaMap[o.key],o.facet);
+          it.innerHTML=q.rules?o.html:facetHtml(q.silaMap[o.key],o.facet);
           colR.appendChild(it);
         });
 
@@ -416,7 +463,9 @@ $("#btnAgain").addEventListener("click",()=>{FX.click();startQuiz();});
 $("#btnHome").addEventListener("click",()=>{FX.click();show("screen-home");});
 
 /* ---------- prevent zoom/pull refresh ---------- */
-document.addEventListener("touchmove",e=>{e.preventDefault();},{passive:false});
+document.addEventListener("touchmove",e=>{
+  if(e.touches&&e.touches.length>1)e.preventDefault(); /* blokir pinch saja, biarkan scroll */
+},{passive:false});
 document.addEventListener("gesturestart",e=>e.preventDefault());
 window.addEventListener("load",()=>{ensureAudio();});
 })();
