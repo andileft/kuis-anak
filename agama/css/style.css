@@ -48,6 +48,13 @@ html, body {
   box-shadow:0 4px 0 var(--sky-d); cursor:pointer;
 }
 .count-btns button.sel { background:var(--gold); box-shadow:0 4px 0 var(--gold-d); transform:scale(1.08); }
+/* tombol pilih bab: teks panjang, auto-width */
+#chapterBtns { flex-wrap:wrap; }
+#chapterBtns button {
+  width:auto; min-width:56px; height:auto; padding:10px 14px;
+  font-size:15px; line-height:1.2; white-space:nowrap;
+}
+#chapterBtns button.sel { transform:none; }
 
 .big-btn {
   display:block; width:min(88%,380px); margin:14px auto; padding:18px; border:none;
