@@ -144,7 +144,21 @@ const BANK2 = [
   { q:"Aturan di rumah dibuat oleh ____.",
     o:["ayah dan ibu bersama keluarga","teman sekolah","penjaga toko"], a:0, mode:"mcq" },
   { q:"Aturan di rumah dan di sekolah sama-sama harus kita ____.",
-    o:["patuhi","tanyakan","tolak"], a:0, mode:"both" }
+    o:["patuhi","tanyakan","tolak"], a:0, mode:"both" },
+  { q:"Sebelum berangkat ke sekolah, kita harus ____ kepada orang tua.",
+    o:["berpamitan","menangis","langsung keluar"], a:0, mode:"mcq" },
+  { q:"Saat ulangan, kita tidak boleh ____.",
+    o:["curang","jujur","rukun"], a:0, mode:"mcq" },
+  { q:"Setelah selesai bermain bersama teman, mainan yang sudah digunakan sebaiknya ____.",
+    o:["dikembalikan ke tempatnya","dibuang saja","disembunyikan"], a:0, mode:"mcq" },
+  { q:"Berbicara seperlunya saat makan, manfaatnya adalah ____.",
+    o:["tidak tersedak saat makan","terhindar dari kuman","mendapat berkat dari Tuhan"], a:0, mode:"mcq" },
+  { q:"Kita harus datang ke sekolah tepat waktu dan tidak terlambat agar ____.",
+    o:["tidak ketinggalan pelajaran","bisa bermain lebih lama","tidak perlu piket"], a:0, mode:"both" },
+  { q:"Membersihkan kelas bersama pada pagi hari disebut ____.",
+    o:["piket kelas","upacara bendera","berbaris"], a:0, mode:"mcq" },
+  { q:"Saat bermain bersama teman, kita harus ____ mainan.",
+    o:["bergantian menggunakan","merampas","merusak"], a:0, mode:"both" }
 ];
 
 /* Klasifikasi LKPD (MENGAPLIKASI): kegiatan -> tempat aturannya */
