@@ -367,11 +367,11 @@ const BENARSALAH3 = [
 
 const RIDDLE3 = [
   { d:"Aku suku kata awal kata kalung, kamar, dan kambing. Siapakah aku?",
-    o:["ka- \u{1F410}","ke- \u{1F957}","ku- \u{1F434}"], a:0 },
+    o:["ka- \u{1F410}","ke- \u{1F965}","ku- \u{1F434}"], a:0 },
   { d:"Aku suku kata awal kata kelapa, kerang, dan kelinci. Siapakah aku?",
-    o:["ke- \u{1F957}","ka- \u{1F410}","ki- \u{1F348}"], a:0 },
+    o:["ke- \u{1F965}","ka- \u{1F410}","ki- \u{1F348}"], a:0 },
   { d:"Aku suku kata awal kata kuku, kuda, dan kuas. Siapakah aku?",
-    o:["ku- \u{1F434}","ka- \u{1F410}","ke- \u{1F957}"], a:0 },
+    o:["ku- \u{1F434}","ka- \u{1F410}","ke- \u{1F965}"], a:0 },
   { d:"Aku suku kata awal kata lalat, laci, dan laut. Siapakah aku?",
     o:["la- \u{1F30A}","le- \u{1F41F}","li- \u{1F3D6}"], a:0 },
   { d:"Aku suku kata awal kata lele dan lezat. Siapakah aku?",
