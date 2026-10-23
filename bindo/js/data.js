@@ -275,3 +275,174 @@ const FILL = [
 ];
 
 window.BINDO_DATA = { MATERI, MCQ, BENARSALAH, RIDDLE, MATCH_SETS, MATCH_PAIRS, FILL, shuffle, pickN };
+
+/* ============================================================= *
+ * ========== BAB 3 · Suku Kata ka/ke/ki/ku, la/li/le/lo ======= *
+ * Sumber: "9. TES FORMATIF_B.INDO BAB 3_2026.pdf" (Quintal 23 Okt
+ * 2026, bahan sumatif Selasa 27 Okt 2026) + agenda mingguan.
+ * ============================================================= */
+const MATERI3 = [
+  { t:"Menyimak Cerita",
+    isi:["Saat guru membacakan cerita, duduklah dengan tenang.",
+         "Dengarkan dengan saksama, jangan becanda dengan teman.",
+         "Kalau ada yang tidak jelas, kamu boleh bertanya kepada guru."],
+    contoh:["Saat menyimak cerita, kamu harus duduk dengan tenang.",
+            "Tokoh, tempat, dan kejadian adalah hal penting dalam cerita."] },
+  { t:"Kata diawali ka-, ke-, ki-, ku-",
+    isi:["ka- : kalung, kamar, kambing, kamera",
+         "ke- : kelapa, kerang, kereta, kelinci",
+         "ki- : kiwi, kipas, kita",
+         "ku- : kuku, kuda, kulkas, kuas, kuning"],
+    contoh:["Nama benda yang diawali ku- adalah kuas.",
+            "Nama buah yang diawali ke- adalah kelapa.",
+            "Nama hewan yang diawali la- adalah lalat."] },
+  { t:"Kata diawali la-, li-, le-, lo-",
+    isi:["la- : lalat, laci, laut, lapangan",
+         "li- : liburan, lima",
+         "le- : lele, lezat, lena",
+         "lo- : lodeh"],
+    contoh:["Hani dan Heri liburan di pinggir laut.",
+            "Mereka makan nasi, sayur lodeh, dan lele goreng.",
+            "Makanan itu sangat lezat."] },
+  { t:"Cuci Tangan Setelah Bermain",
+    isi:["Setelah bermain, tangan kita banyak kuman.",
+         "Cuci tanganmu dengan sabun sebelum makan.",
+         "Supaya kuman hilang dan kita tidak sakit."],
+    contoh:["\u201cCuci tanganmu dengan sabun!\u201d adalah kalimat perintah.",
+            "Kita mencuci tangan di kamar mandi atau wastafel."] },
+  { t:"Nama Hewan",
+    isi:["Kambing, kelinci, katak, rusa, kuda adalah nama-nama hewan.",
+         "Amatilah gambar dengan saksama, lalu sebutkan namanya."],
+    contoh:["Gambar hewan bertanduk = kambing.",
+            "Gambar hewan telinga panjang suka wortel = kelinci."] }
+];
+
+const MCQ3 = [
+  { q:"Saat menyimak cerita, kamu harus ....",
+    o:["duduk dengan tenang","becanda dengan teman","bermain di luar"], a:0 },
+  { q:"Benda yang diawali ku- adalah ....",
+    o:["kuas","kamera","kipas"], a:0 },
+  { q:"Nama benda yang diawali ka- adalah ....",
+    o:["kalung","kerang","kuku"], a:0 },
+  { q:"Nama buah yang diawali ke- adalah ....",
+    o:["kelapa","kera","kiwi"], a:0 },
+  { q:"Nama hewan yang diawali la- adalah ....",
+    o:["lalat","laci","lari"], a:0 },
+  { q:"Fani terjatuh dan memegang ____nya yang luka.",
+    o:["lutut","leher","siku"], a:0 },
+  { q:"Kata \u201clele\u201d diawali suku kata ....",
+    o:["le-","la-","li-"], a:0 },
+  { q:"Kata \u201claut\u201d diawali suku kata ....",
+    o:["la-","lo-","le-"], a:0 },
+  { q:"Kata \u201ckulkas\u201d diawali suku kata ....",
+    o:["ku-","ka-","ki-"], a:0 },
+  { q:"Kata \u201ckerang\u201d diawali suku kata ....",
+    o:["ke-","ka-","ki-"], a:0 },
+  { q:"Kata yang diawali li- adalah ....",
+    o:["liburan","lalat","lele"], a:0 },
+  { q:"Kata yang diawali ki- adalah ....",
+    o:["kiwi","kuas","kalung"], a:0 },
+  { q:"Kata yang diawali lo- adalah ....",
+    o:["lodeh","laut","lezat"], a:0 },
+  { q:"Mengapa kita harus mencuci tangan setelah bermain?",
+    o:["Agar kuman hilang dan kita tidak sakit",
+       "Agar tangan menjadi basah",
+       "Agar teman ikut mencuci tangan"], a:0 },
+  { q:"Kalimat yang tepat untuk gambar anak mencuci tangan adalah ....",
+    o:["Anak itu cuci tangan.","Anak itu tertidur.","Anak itu memasak."], a:0 }
+];
+
+const BENARSALAH3 = [
+  { d:"Kalimat \u201cCuci tanganmu dengan sabun!\u201d adalah kalimat perintah.", a:true },
+  { d:"Kambing diawali suku kata ka-.", a:true },
+  { d:"Kelinci diawali suku kata ke-.", a:true },
+  { d:"Kerang diawali suku kata ka-.", a:false },
+  { d:"Lezat diawali suku kata la-.", a:false },
+  { d:"Kuda diawali suku kata ku-.", a:true },
+  { d:"Lalat diawali suku kata le-.", a:false },
+  { d:"Kita harus mencuci tangan setelah bermain agar tidak sakit.", a:true },
+  { d:"Saat menyimak cerita, kita boleh becanda dengan teman.", a:false },
+  { d:"Kiwi diawali suku kata ki-.", a:true }
+];
+
+const RIDDLE3 = [
+  { d:"Aku suku kata awal kata kalung, kamar, dan kambing. Siapakah aku?",
+    o:["ka- \u{1F410}","ke- \u{1F957}","ku- \u{1F434}"], a:0 },
+  { d:"Aku suku kata awal kata kelapa, kerang, dan kelinci. Siapakah aku?",
+    o:["ke- \u{1F957}","ka- \u{1F410}","ki- \u{1F348}"], a:0 },
+  { d:"Aku suku kata awal kata kuku, kuda, dan kuas. Siapakah aku?",
+    o:["ku- \u{1F434}","ka- \u{1F410}","ke- \u{1F957}"], a:0 },
+  { d:"Aku suku kata awal kata lalat, laci, dan laut. Siapakah aku?",
+    o:["la- \u{1F30A}","le- \u{1F41F}","li- \u{1F3D6}"], a:0 },
+  { d:"Aku suku kata awal kata lele dan lezat. Siapakah aku?",
+    o:["le- \u{1F41F}","la- \u{1F30A}","lo- \u{1F372}"], a:0 },
+  { d:"Aku suku kata awal kata liburan. Siapakah aku?",
+    o:["li- \u{1F3D6}","le- \u{1F41F}","la- \u{1F30A}"], a:0 },
+  { d:"Aku dipakai untuk mencuci tangan supaya kuman hilang. Siapakah aku?",
+    o:["sabun \u{1F9FC}","kipas \u{1FAAD}","kalung \u{1F4FF}"], a:0 },
+  { d:"Tempat kita mencuci tangan dengan air dan sabun. Siapakah aku?",
+    o:["wastafel \u{1F6B0}","kipas \u{1FAAD}","kereta \u{1F682}"], a:0 }
+];
+
+const MATCH_SETS3 = [
+  { key:"suku3", label:"Cocokkan kata dengan suku kata awalnya", lc:"Kata", rc:"Suku kata",
+    auto:[
+      {l:"kalung",r:"ka-"},{l:"kamar",r:"ka-"},{l:"kambing",r:"ka-"},{l:"kamera",r:"ka-"},
+      {l:"kelapa",r:"ke-"},{l:"kerang",r:"ke-"},{l:"kelinci",r:"ke-"},{l:"kereta",r:"ke-"},
+      {l:"kiwi",r:"ki-"},{l:"kipas",r:"ki-"},
+      {l:"kuku",r:"ku-"},{l:"kuda",r:"ku-"},{l:"kulkas",r:"ku-"},{l:"kuas",r:"ku-"},
+      {l:"lalat",r:"la-"},{l:"laci",r:"la-"},{l:"laut",r:"la-"},
+      {l:"liburan",r:"li-"},
+      {l:"lele",r:"le-"},{l:"lezat",r:"le-"},
+      {l:"lodeh",r:"lo-"}
+    ] },
+  { key:"hewan3", label:"Cocokkan nama dengan gambar/cirinya", lc:"Nama", rc:"Gambar",
+    auto:[
+      {l:"kambing",r:"\u{1F410}"},{l:"kelinci",r:"\u{1F430}"},{l:"katak",r:"\u{1F438}"},{l:"rusa",r:"\u{1F98C}"},
+      {l:"kuda",r:"\u{1F40E}"},{l:"lalat",r:"\u{1FAB0}"},{l:"lele",r:"\u{1F41F}"},{l:"kera",r:"\u{1F435}"},
+      {l:"kipas",r:"\u{1FAAD}"},{l:"kuas",r:"\u{1F58C}"}
+    ] },
+  { key:"kalimat3", label:"Cocokkan kalimat dengan jenisnya", lc:"Kalimat", rc:"Jenis kalimat",
+    sets:[
+      [ {l:"Cuci tanganmu dengan sabun!",r:"Kalimat perintah"},
+        {l:"Ayo, kita cuci tangan bersama!",r:"Kalimat ajakan"},
+        {l:"Mengapa tangan harus dicuci?",r:"Kalimat tanya"},
+        {l:"Hani liburan di pinggir laut.",r:"Kalimat berita"} ],
+      [ {l:"Minumlah susu sebelum tidur!",r:"Kalimat perintah"},
+        {l:"Mari makan bersama-sama!",r:"Kalimat ajakan"},
+        {l:"Siapa nama temanmu?",r:"Kalimat tanya"},
+        {l:"Makanan itu sangat lezat.",r:"Kalimat berita"} ]
+    ] }
+];
+
+const FILL3 = [
+  { t:"Dua anak itu sedang ____ tangan dengan sabun.",
+    o:["cuci","makan","tidur"], a:0 },
+  { t:"Mereka mencuci tangan di ____.",
+    o:["kamar mandi","taman","kamar tidur"], a:0 },
+  { t:"Hani dan Heri liburan di pinggir ____.",
+    o:["laut","laci","lele"], a:0 },
+  { t:"Mereka makan nasi, sayur ____, dan lele goreng.",
+    o:["lodeh","liburan","lalat"], a:0 },
+  { t:"Makanan itu sangat ____.",
+    o:["lezat","lelah","lucu"], a:0 },
+  { t:"Sebelum makan, ____ tanganmu dengan sabun!",
+    o:["cuci","lari","duduki"], a:0 },
+  { t:"Kambing, kelinci, katak, rusa, dan kuda adalah nama ____.",
+    o:["hewan","buah","benda"], a:0 },
+  { t:"Nama buah yang diawali ke- adalah ____.",
+    o:["kelapa","kera","kiwi"], a:0 },
+  { t:"Nama benda yang diawali ku- adalah ____.",
+    o:["kuas","kamera","kipas"], a:0 },
+  { t:"Kalimat perintah: \u201c____ tanganmu setelah bermain!\u201d",
+    o:["Cuci","Makan","Lihat"], a:0 }
+];
+
+/* ---------- Pilih bab ---------- */
+const BAB2_DATA = window.BINDO_DATA;
+const BAB3_DATA = { MATERI:MATERI3, MCQ:MCQ3, BENARSALAH:BENARSALAH3, RIDDLE:RIDDLE3,
+                    MATCH_SETS:MATCH_SETS3, MATCH_PAIRS, FILL:FILL3, shuffle, pickN };
+window.BINDO_BABS = [
+  { nama:"Bab 2 · Mari Bermain", data:BAB2_DATA },
+  { nama:"Bab 3 · Suku Kata",    data:BAB3_DATA }
+];

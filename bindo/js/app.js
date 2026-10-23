@@ -3,7 +3,7 @@
 "use strict";
 
 /* ---------- data access ---------- */
-const D = window.BINDO_DATA;
+let D = window.BINDO_DATA;
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
@@ -60,6 +60,21 @@ function confetti(n){
 /* ====================== HOME & MATERI =================== */
 /* ======================================================= */
 let quizCount=10;
+let curBab=window.BINDO_BABS[0];
+(function renderBabBtns(){
+  const bb=$("#babBtns");
+  if(!bb) return;
+  bb.innerHTML=window.BINDO_BABS.map((b,i)=>`<button data-i="${i}"${i===0?' class="sel"':''}>${b.nama}</button>`).join("");
+  bb.addEventListener("click",e=>{
+    const b=e.target.closest("button");if(!b)return;
+    curBab=window.BINDO_BABS[+b.dataset.i];
+    D=curBab.data;
+      $$("#babBtns button").forEach(x=>x.classList.toggle("sel",x===b));
+    $("#btnMateri").textContent="📖 Materi "+curBab.nama;
+    $(".topbar-title").textContent="Materi "+curBab.nama;
+    FX.click();
+  });
+})();
 $("#countBtns").addEventListener("click",(e)=>{
   const b=e.target.closest("button");if(!b)return;
   quizCount=parseInt(b.dataset.n,10);
