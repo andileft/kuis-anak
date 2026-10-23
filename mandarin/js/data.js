@@ -97,6 +97,61 @@ window.KUIS = {
         img: ["gambar2char", "gambar2arti", "dialog", "match"],
         write: ["char2write"]
       }
+    },
+    {
+      id: "bab3",
+      nama: "Bab 3 · Perkenalan",
+      kind: "kata",
+      judul: "Memperkenalkan Diri (Unit 4)",
+      zh: "叫 什么 名字 他 她 不 知道",
+      learnTitle: "Belajar Perkenalan",
+      // Kosakata LKPD Kelas 1 unit 4 (Quintal, terbit 22 Okt 2026)
+      items: [
+        { key: "jiao",    char: "叫",    pinyin: "jiào",   arti: "bernama; memanggil", emoji: "🗣️" },
+        { key: "shenme",  char: "什么",  pinyin: "shénme", arti: "apa",                emoji: "❓" },
+        { key: "mingzi",  char: "名字",  pinyin: "míngzi", arti: "nama",               emoji: "🏷️" },
+        { key: "ta_l",    char: "他",    pinyin: "tā",     arti: "dia (laki-laki)",    emoji: "👦" },
+        { key: "ta_p",    char: "她",    pinyin: "tā",     arti: "dia (perempuan)",    emoji: "👧" },
+        { key: "bu",      char: "不",    pinyin: "bù",     arti: "tidak",              emoji: "🚫" },
+        { key: "zhidao",  char: "知道",  pinyin: "zhīdào", arti: "tahu",               emoji: "💡" }
+      ],
+      // hanzi tunggal untuk latihan urutan tulis (bagian IV LKPD: 叫 什 么 不 他 她)
+      writeItems: [
+        { key: "w_jiao",   char: "叫", pinyin: "jiào",   arti: "bernama; memanggil" },
+        { key: "w_shen",   char: "什", pinyin: "shén",   arti: "" },
+        { key: "w_me",     char: "么", pinyin: "me",     arti: "" },
+        { key: "w_bu",     char: "不", pinyin: "bù",     arti: "tidak" },
+        { key: "w_ta_l",   char: "他", pinyin: "tā",     arti: "dia (laki-laki)" },
+        { key: "w_ta_p",   char: "她", pinyin: "tā",     arti: "dia (perempuan)" }
+      ],
+      // kalimat kunci bagian II LKPD unit 4
+      dialogs: [
+        { speaker: "👩‍🏫", bubble: "你叫什么名字？", note: "(guru bertanya nama Elle)",            answer: "我叫 Elle。",      opts: ["我叫 Elle。", "我不知道。", "再见！"] },
+        { speaker: "🧒",  bubble: "你叫什么名字？", note: "(teman baru bertanya namamu)",        answer: "我叫 Michelle。",  opts: ["我叫 Michelle。", "她叫什么？", "我不知道。"] },
+        { speaker: "👦",  bubble: "他叫什么名字？", note: "(menunjuk teman laki-laki)",          answer: "他叫 Aaron。",     opts: ["他叫 Aaron。", "她叫 Aaron。", "我不知道。"] },
+        { speaker: "👧",  bubble: "她叫什么名字？", note: "(menunjuk teman perempuan)",          answer: "她叫 Michelle。",  opts: ["她叫 Michelle。", "他叫 Michelle。", "我叫 Michelle。"] },
+        { speaker: "🧒",  bubble: "你知道他的名字吗？", note: "(guru bertanya nama temannya)", answer: "我不知道。",      opts: ["我不知道。", "我知道。", "他叫什么？"] },
+        { speaker: "🧑",  bubble: "你叫什么名字？", note: "(kamu lupa, mau jawab jujur…)",       answer: "我不知道。",       opts: ["我不知道。", "她叫什么。", "再见！"] },
+        { speaker: "🧒",  bubble: "这个字怎么读？——她", note: "(cara baca hanzi 'dia perempuan')", answer: "tā",           opts: ["tā", "bù", "jiào"] },
+        { speaker: "🧒",  bubble: "这个字怎么读？——叫", note: "(cara baca hanzi 'bernama')",       answer: "jiào",          opts: ["jiào", "tā", "shénme"] }
+      ],
+      matchSchemas: [
+        { id: "tulisan-arti",   l: "char",   r: "arti",   label: "Cocokkan tulisan dengan artinya" },
+        { id: "tulisan-pinyin", l: "char",   r: "pinyin", label: "Cocokkan tulisan dengan cara bacanya" },
+        { id: "pinyin-arti",    l: "pinyin", r: "arti",   label: "Cocokkan cara baca dengan artinya" },
+        { id: "arti-tulisan",   l: "arti",   r: "char",   label: "Cocokkan arti dengan tulisannya" },
+        { id: "pinyin-tulisan", l: "pinyin", r: "char",   label: "Cocokkan cara baca dengan tulisannya" },
+        { id: "arti-pinyin",    l: "arti",   r: "pinyin", label: "Cocokkan arti dengan cara bacanya" },
+        { id: "campur",         l: "mix",    r: "mix",    label: "Cocokkan tulisan, cara baca, dan artinya" }
+      ],
+      matchSize: 4,
+      modes: {
+        all: ["char2arti", "char2py", "arti2char", "pinyin2char", "arti2pinyin", "audio2arti", "match",
+              "stroke2arti", "gambar2char", "gambar2arti", "dialog", "char2write"],
+        imgwrite: ["gambar2char", "gambar2arti", "dialog", "match", "char2write"],
+        img: ["gambar2char", "gambar2arti", "dialog", "match"],
+        write: ["char2write"]
+      }
     }
   ]
 };
