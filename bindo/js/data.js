@@ -353,16 +353,16 @@ const MCQ3 = [
 ];
 
 const BENARSALAH3 = [
-  { d:"Kalimat \u201cCuci tanganmu dengan sabun!\u201d adalah kalimat perintah.", a:true },
-  { d:"Kambing diawali suku kata ka-.", a:true },
-  { d:"Kelinci diawali suku kata ke-.", a:true },
-  { d:"Kerang diawali suku kata ka-.", a:false },
-  { d:"Lezat diawali suku kata la-.", a:false },
-  { d:"Kuda diawali suku kata ku-.", a:true },
-  { d:"Lalat diawali suku kata le-.", a:false },
-  { d:"Kita harus mencuci tangan setelah bermain agar tidak sakit.", a:true },
-  { d:"Saat menyimak cerita, kita boleh becanda dengan teman.", a:false },
-  { d:"Kiwi diawali suku kata ki-.", a:true }
+  { s:"Kalimat \u201cCuci tanganmu dengan sabun!\u201d adalah kalimat perintah.", b:true, emoji:"🧼" },
+  { s:"Kambing diawali suku kata ka-.", b:true, emoji:"🐐" },
+  { s:"Kelinci diawali suku kata ke-.", b:true, emoji:"🐰" },
+  { s:"Kerang diawali suku kata ka-.", b:false, emoji:"🐚" },
+  { s:"Lezat diawali suku kata la-.", b:false, emoji:"😋" },
+  { s:"Kuda diawali suku kata ku-.", b:true, emoji:"🐎" },
+  { s:"Lalat diawali suku kata le-.", b:false, emoji:"🪰" },
+  { s:"Kita harus mencuci tangan setelah bermain agar tidak sakit.", b:true, emoji:"🧼" },
+  { s:"Saat menyimak cerita, kita boleh becanda dengan teman.", b:false, emoji:"🤭" },
+  { s:"Kiwi diawali suku kata ki-.", b:true, emoji:"🥝" }
 ];
 
 const RIDDLE3 = [
