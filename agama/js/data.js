@@ -279,6 +279,129 @@ const AYAT1 = [
   { t:"Yesus Menyembuhkan Bartimeus", v:"\"Pergilah, imanmu telah menyelamatkan engkau. Pada saat itu juga melihatlah ia, lalu ia mengikuti Yesus dalam perjalanannya.\"", r:"Markus 10:52" }
 ];
 
+/* ======================================================= */
+/* === BAB 3 : Allah Sang Pencipta Alam Semesta & Manusia = */
+/* Sumber: Rangkuman Materi BAB III.docx (Kejadian 1:1-28 & 2:7-23)
+   + LKPD Agama Katolik Bab 3 (Formatif 3, SD Stella Maris,
+   Rabu 18 November 2026).                                 */
+/* ======================================================= */
+
+Object.assign(BODY, {
+  matahari: { emoji:"☀️",  name:"Matahari" },
+  bumi:     { emoji:"🌍",  name:"Bumi" },
+  manusia:  { emoji:"👫",  name:"Manusia" },
+  langit:   { emoji:"☁️",  name:"Langit" },
+  hewan:    { emoji:"🐘",  name:"Hewan" },
+  tanaman:  { emoji:"🌺",  name:"Pohon & Bunga" },
+  berdoa:   { emoji:"🙏",  name:"Berdoa" },
+  menjaga:  { emoji:"🌱",  name:"Menjaga Ciptaan" },
+  sayang:   { emoji:"❤️",  name:"Menyayangi Ciptaan" },
+  adam:     { emoji:"👨",  name:"Adam" },
+  hawa:     { emoji:"👩",  name:"Hawa" },
+  eden:     { emoji:"🌷",  name:"Taman Eden" },
+  terang:   { emoji:"💡",  name:"Terang" },
+  laut:     { emoji:"🌊",  name:"Laut" },
+  burung:   { emoji:"🐦",  name:"Burung" },
+  orangtua: { emoji:"👨‍👩‍👧", name:"Ayah dan Ibu" }
+});
+
+const MCQ3 = [
+  { q:"Siapakah yang menciptakan langit, bumi, dan segala isinya?", o:["Allah Bapa di Surga","Matahari","Manusia"], a:0, src:"Rangkuman Bab 3" },
+  { q:"Setiap kali selesai menciptakan sesuatu, Allah melihat bahwa semuanya ...", o:["sungguh baik adanya","kurang baik","biasa saja"], a:0, src:"Kejadian 1" },
+  { q:"Pada hari ke berapakah Allah menciptakan terang dan gelap?", o:["Hari ke-1","Hari ke-2","Hari ke-4"], a:0, src:"Kejadian 1:3-5" },
+  { q:"Pada hari ke berapakah Allah menciptakan cakrawala (langit)?", o:["Hari ke-2","Hari ke-1","Hari ke-5"], a:0, src:"Kejadian 1:6-8" },
+  { q:"Apa saja yang diciptakan Allah pada hari ke-3?", o:["Darat, laut, dan tumbuhan","Matahari, bulan, dan bintang","Ikan dan burung"], a:0, src:"Kejadian 1:9-13" },
+  { q:"Pada hari ke berapakah Allah menciptakan matahari, bulan, dan bintang?", o:["Hari ke-4","Hari ke-3","Hari ke-6"], a:0, src:"Kejadian 1:14-19" },
+  { q:"Pada hari ke berapakah Allah menciptakan hewan laut dan hewan udara?", o:["Hari ke-5","Hari ke-4","Hari ke-6"], a:0, src:"Kejadian 1:20-23" },
+  { q:"Pada hari ke berapakah Allah menciptakan hewan darat dan manusia?", o:["Hari ke-6","Hari ke-5","Hari ke-2"], a:0, src:"Kejadian 1:24-31" },
+  { q:"Matahari diciptakan Allah untuk menerangi ....", o:["siang","malam","laut"], a:0, src:"Kejadian 1:16" },
+  { q:"Bulan dan bintang diciptakan Allah untuk menerangi ....", o:["malam","siang","hutan"], a:0, src:"Kejadian 1:16" },
+  { q:"Hewan yang diciptakan Allah di laut adalah ....", o:["ikan, kepiting, dan udang","kucing, kambing, dan sapi","burung, kupu-kupu, dan serangga"], a:0, src:"Kejadian 1:20-22" },
+  { q:"Manusia pertama laki-laki diciptakan dari ... dan diberi nama ...", o:["segumpal tanah, bernama Adam","tulang rusuk, bernama Adam","debu bintang, bernama Hawa"], a:0, src:"Kejadian 2:7" },
+  { q:"Bagaimana Allah menghidupkan tubuh Adam?", o:["Menghembuskan nafas kehidupan ke dalam tubuhnya","Memanggil namanya tiga kali","Memberinya makanan dari surga"], a:0, src:"Kejadian 2:7" },
+  { q:"Manusia diciptakan Allah menurut ....", o:["gambar dan rupa Allah","gambar malaikat","rupa hewan"], a:0, src:"Kejadian 1:27" },
+  { q:"Mengapa Allah menciptakan Hawa dari tulang rusuk Adam?", o:["Agar Adam tidak merasa kesepian dan memiliki teman yang sepadan","Agar Adam punya pelayan","Agar Adam bisa tinggal di surga"], a:0, src:"Kejadian 2:18-22" },
+  { q:"Apakah nama taman indah tempat tinggal Adam dan Hawa?", o:["Taman Eden","Taman Getsemani","Taman Bunga"], a:0, src:"Rangkuman Bab 3" },
+  { q:"Apa tugas yang diberikan Allah kepada manusia?", o:["Memelihara, menjaga, dan memanfaatkan bumi dengan tanggung jawab","Menjual semua tumbuhan di bumi","Menghitung semua hewan di laut"], a:0, src:"Kejadian 1:28" },
+  { q:"Siapakah wakil Allah di rumah yang merawat dan membesarkan kita?", o:["Ayah dan Ibu","Guru","Teman"], a:0, src:"Rangkuman Bab 3" },
+  { q:"Sebutkan 2 cara merawat bumi ciptaan Tuhan!", o:["Menyiram tanaman dan tidak membuang sampah sembarangan","Menebang pohon dan membakar hutan","Mengotori sungai dan jalan"], a:0, src:"Rangkuman Bab 3" },
+  { q:"Sikap kita kepada ayah dan ibu seharusnya ....", o:["taat, patuh, dan menyayangi mereka","membantah dan membentak","mengabaikan nasihatnya"], a:0, src:"Rangkuman Bab 3" },
+  { q:"Sebagai tanda syukur atas alam semesta, setiap hari kita ....", o:["berdoa dan berterima kasih kepada Allah","mengeluh karena cuaca panas","membuang sampah di halaman"], a:0, src:"Rangkuman Bab 3" },
+  { q:"Manusia diciptakan Allah paling akhir, yaitu pada hari ke-6. Itu artinya manusia ....", o:["istimewa dan dipercaya merawat ciptaan Allah","tidak penting di antara ciptaan","sama seperti tumbuhan"], a:0, src:"Rangkuman Bab 3" }
+];
+
+const GOODBAD3 = [
+  { s:"Berdoa setiap hari untuk bersyukur atas alam semesta.", b:"berdoa", good:true },
+  { s:"Menyiram tanaman yang ada di halaman rumah.", b:"tanaman", good:true },
+  { s:"Membuang sampah sembarangan di sekolah.", b:"bumi", good:false },
+  { s:"Menyayangi hewan piaraan di rumah.", b:"hewan", good:true },
+  { s:"Memetik bunga di taman tanpa izin.", b:"tanaman", good:false },
+  { s:"Menghormati ayah dan ibu serta menaati nasihatnya.", b:"orangtua", good:true },
+  { s:"Membantah dengan suara keras kepada orang tua.", b:"orangtua", good:false },
+  { s:"Merawat ciptaan Allah dengan penuh tanggung jawab.", b:"menjaga", good:true },
+  { s:"Menebang pohon sembarangan hingga hutan menjadi gundul.", b:"tanaman", good:false },
+  { s:"Bersyukur kepada Allah atas matahari yang menerangi siang.", b:"matahari", good:true },
+  { s:"Menyiksa atau melempar hewan dengan batu.", b:"hewan", good:false },
+  { s:"Membuat slogan \"Bumiku Rumahku\" untuk mengingatkan teman menjaga bumi.", b:"bumi", good:true }
+];
+
+const RIDDLE3 = [
+  { d:"Apa yang diciptakan Allah pada hari ke-1 untuk memisahkan siang dan malam?",
+    key:"terang", opts:["terang","laut","manusia"] },
+  { d:"Aku diciptakan Allah pada hari ke-4. Aku bersinar sangat terang di langit pada siang hari. Siapakah aku?",
+    key:"matahari", opts:["matahari","bumi","terang"] },
+  { d:"Aku gumpalan awan di angkasa. Allah menciptakan aku pada hari ke-2. Siapakah aku?",
+    key:"langit", opts:["langit","laut","tanaman"] },
+  { d:"Aku kumpulan air yang diciptakan Allah pada hari ke-3. Ombakku bergulung di pantai. Siapakah aku?",
+    key:"laut", opts:["laut","bumi","langit"] },
+  { d:"Kami diciptakan Allah pada hari ke-5. Kami berenang di laut dan terbang di udara. Siapakah kami?",
+    key:"hewan", opts:["hewan","tanaman","orangtua"] },
+  { d:"Aku manusia pertama. Allah membentuk aku dari segumpal tanah lalu menghembuskan nafas kehidupan. Siapakah aku?",
+    key:"adam", opts:["adam","hawa","orangtua"] },
+  { d:"Aku dibentuk Allah dari tulang rusuk manusia pertama, supaya ia tidak kesepian. Siapakah aku?",
+    key:"hawa", opts:["hawa","adam","manusia"] },
+  { d:"Aku taman yang sangat indah, subur, dan berlimpah makanan. Allah menempatkan Adam di sini. Siapakah aku?",
+    key:"eden", opts:["eden","bumi","langit"] },
+  { d:"Kami adalah wakil Allah di rumah. Kami merawat dan membesarkanmu sejak bayi. Siapakah kami?",
+    key:"orangtua", opts:["orangtua","manusia","adam"] },
+  { d:"Allah menciptakan aku sebagai rumah bagi manusia dan hewan. Gunung, laut, dan tanah ada di tubuhku. Siapakah aku?",
+    key:"bumi", opts:["bumi","rumah","laut"] }
+];
+
+const MATCH_PAIRS3 = [
+  { k:"matahari", f:"Allah menciptakan matahari." },
+  { k:"bumi",     f:"Allah menciptakan bumi." },
+  { k:"manusia",  f:"Allah menciptakan manusia." },
+  { k:"langit",   f:"Allah menciptakan langit." },
+  { k:"hewan",    f:"Allah menciptakan hewan." },
+  { k:"tanaman",  f:"Allah menciptakan pohon dan bunga." },
+  { k:"rumah",    f:"Allah menciptakan rumah." },
+  { k:"menjaga",  f:"Manusia harus menjaga ciptaan Allah." },
+  { k:"berdoa",   f:"Manusia harus berdoa kepada Allah." },
+  { k:"sayang",   f:"Kita harus menyayangi semua ciptaan Allah." }
+];
+
+const FILL3 = [
+  { t:"Bumi dan isinya tidak ada dengan sendirinya, tetapi diciptakan oleh ___.", o:["Allah Bapa di Surga","manusia","hewan"], a:0 },
+  { t:"Allah menciptakan alam semesta dalam ___ hari.", o:["enam","dua","sepuluh"], a:0 },
+  { t:"Pada hari ke-1 Allah menciptakan ___ dan gelap.", o:["terang","bulan","ikan"], a:0 },
+  { t:"Pada hari ke-4 Allah menciptakan matahari, bulan, dan ___.", o:["bintang","pohon","gajah"], a:0 },
+  { t:"Manusia pertama dibentuk Allah dari segumpal ___.", o:["tanah","air","kayu"], a:0 },
+  { t:"Allah menghembuskan ___ kehidupan ke dalam tubuh Adam.", o:["nafas","angin","cahaya"], a:0 },
+  { t:"Allah mengambil ___ rusuk Adam untuk membentuk Hawa.", o:["tulang","kulit","rambut"], a:0 },
+  { t:"Adam dan Hawa tinggal di Taman ___.", o:["Eden","Bunga","Getsemani"], a:0 },
+  { t:"Kita harus ___ tanaman setiap hari agar tetap segar.", o:["menyiram","menginjak","mencabut"], a:0 },
+  { t:"Ayah dan Ibu adalah ___ Allah di dunia yang merawat kita.", o:["wakil","teman","guru"], a:0 },
+  { t:"Anak yang baik harus ___ dan patuh kepada orang tua.", o:["taat","membantah","melawan"], a:0 }
+];
+
+const AYAT3 = [
+  { t:"Allah Menciptakan Langit dan Bumi", v:"\"Pada mulanya Allah menciptakan langit dan bumi.\"", r:"Kejadian 1:1" },
+  { t:"Manusia Menurut Gambar Allah", v:"\"Maka Allah menciptakan manusia itu menurut gambar-Nya, menurut gambar Allah diciptakan-Nya dia; laki-laki dan perempuan diciptakan-Nya mereka.\"", r:"Kejadian 1:27" },
+  { t:"Adam Dibentuk dari Debu Tanah", v:"\"Ketika itulah TUHAN Allah membentuk manusia itu dari debu tanah dan menghembuskan nafas hidup ke dalam hidungnya; demikianlah manusia itu menjadi makhluk yang hidup.\"", r:"Kejadian 2:7" },
+  { t:"Hawa Diciptakan untuk Adam", v:"\"Lalu TUHAN Allah membuat perempuan itu dari tulang rusuk yang diambil-Nya dari pada manusia itu, dan dibawa-Nya perempuan itu kepada manusia itu.\"", r:"Kejadian 2:22" }
+];
+
 /* Unit data per bab: engine dan home screen membaca ini */
 window.AGAMA_UNITS = [
   { id:"bab1", label:"Bab 1 · Aku Bersyukur",
@@ -294,7 +417,14 @@ window.AGAMA_UNITS = [
     data:{ BODY:BODY, MCQ:MCQ2, GOODBAD:GOODBAD2, RIDDLE:RIDDLE2, MATCH_PAIRS:MATCH_PAIRS2, FILL:FILL2, shuffle:shuffle, pickN:pickN },
     ayat:AYAT2,
     matchPrompt:"Tap warga sekolah di kiri, lalu tap tugasnya di kanan",
-    colL:"Warga Sekolah", colR:"Tugasnya" }
+    colL:"Warga Sekolah", colR:"Tugasnya" },
+  { id:"bab3", label:"Bab 3 · Allah Sang Pencipta",
+    sub:"Allah Sang Pencipta Alam Semesta & Manusia",
+    zh:"6 Hari Penciptaan • Adam & Hawa di Taman Eden • Merawat Bumi & Menghormati Orang Tua",
+    data:{ BODY:BODY, MCQ:MCQ3, GOODBAD:GOODBAD3, RIDDLE:RIDDLE3, MATCH_PAIRS:MATCH_PAIRS3, FILL:FILL3, shuffle:shuffle, pickN:pickN },
+    ayat:AYAT3,
+    matchPrompt:"Tap ciptaan di kiri, lalu tap pernyataan yang tepat di kanan",
+    colL:"Ciptaan", colR:"Pernyataan" }
 ];
 
 window.AGAMA_DATA = { BODY, MCQ, GOODBAD, RIDDLE, MATCH_PAIRS, FILL, shuffle, pickN };

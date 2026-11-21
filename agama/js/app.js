@@ -3,8 +3,9 @@
 "use strict";
 
 /* ---------- data access ---------- */
-let D = window.AGAMA_UNITS[0].data;
-let UNIT = window.AGAMA_UNITS[0];
+// default: bab terakhir = materi terbaru (SAS berikutnya)
+let UNIT = window.AGAMA_UNITS[window.AGAMA_UNITS.length-1];
+let D = UNIT.data;
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
@@ -24,6 +25,7 @@ document.addEventListener("click",(e)=>{
   const u=window.AGAMA_UNITS.find(x=>x.id===b.dataset.id);
   if(u){setUnit(u);FX.click();}
 });
+setUnit(UNIT);   // tampilkan bab default di home (subjudul, topik, tombol terpilih)
 
 function show(id){
   $$(".screen").forEach(s=>s.classList.remove("active"));
@@ -298,13 +300,13 @@ function renderQuestion(){
 
   function renderMatch(q){
     opt.className="options";
-    opt.innerHTML=`<div class="match-info">Tap anggota tubuh kiri, lalu tap fungsinya di kanan — atau seret langsung ke pasangannya.</div>`;
+    opt.innerHTML=`<div class="match-info">Tap kotak di kiri, lalu tap pasangannya di kanan — atau seret langsung ke pasangannya.</div>`;
     const wrap=document.createElement("div");
     wrap.className="match-wrap";
     const colL=document.createElement("div");colL.className="match-col match-left";
     const colR=document.createElement("div");colR.className="match-col match-right";
-    colL.innerHTML="<div class='col-label'>"+(D.colL||"Anggota Tubuh")+"</div>";
-    colR.innerHTML="<div class='col-label'>"+(D.colR||"Fungsi")+"</div>";
+    colL.innerHTML="<div class='col-label'>"+(UNIT.colL||D.colL||"Pilihan")+"</div>";
+    colR.innerHTML="<div class='col-label'>"+(UNIT.colR||D.colR||"Pasangannya")+"</div>";
     wrap.appendChild(colL);wrap.appendChild(colR);
     opt.appendChild(wrap);
 
