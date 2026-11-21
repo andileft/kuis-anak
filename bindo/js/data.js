@@ -438,11 +438,202 @@ const FILL3 = [
     o:["Cuci","Makan","Lihat"], a:0 }
 ];
 
+/* ===== BAB 4 · Aku Pasti Bisa (SAS Senin, 23 Nov 2026) =====
+   Sumber: buku ESPS B.Indonesia Kelas 1 Bab 4 "Aku Pasti Bisa" (h. 58-73)
+           + LATIHAN SOAL B.INDONESIA (TES FORMATIF) BAB 4 SD Stella Maris 2026/2027
+   Materi: Menirukan Gerakan dalam Cerita • Kata ma- mi- mu- me- mo-
+           Kata ga- gi- gu- ge- go- • Menceritakan Kembali dengan Runtut
+           Teks "Bermain Engklek" & "Balap Karung" • Kata serapan bahasa daerah
+*/
+
+const MATERI4 = [
+  { t:"Menirukan Gerakan dalam Cerita",
+    isi:["Menyimak berarti mendengarkan dengan saksama.",
+         "Gerakan yang sering ada dalam cerita:",
+         "lari, jalan, lompat, berdiri, duduk, jongkok.",
+         "Tirukan gerakan sesuai cerita yang didengar."],
+    contoh:["Dona berlari sangat cepat. Itu sebabnya Dona menjadi juara.",
+            "\"Coba tirukan gerakan lari!\" — kita berlari di tempat.",
+            "Gerakan dalam permainan engklek adalah melompat."] },
+  { t:"Kata Diawali ma-, mi-, mu-, me-, mo-",
+    isi:["ma- : mawar, makan, madu, macan, mahal",
+         "mi- : minyak, minum, mirip",
+         "mu- : musang, murah, muda",
+         "me- : meja, merah, megah, menang, melempar",
+         "mo- : mobil, motor, molen, monyet"],
+    contoh:["Lebah dapat menghasilkan madu.",
+            "Ayah mengantar Adi ke sekolah naik motor.",
+            "Bunga di halaman rumah adalah mawar."] },
+  { t:"Kata Diawali ga-, gi-, gu-, ge-, go-",
+    isi:["ga- : garam, gayung, gajah",
+         "gi- : gigi, gitar",
+         "gu- : gula, gunung, gulai, gurame, gurih",
+         "ge- : gelas, gelang, gerak, gemar, goreng, genting",
+         "go- : gotong, gosok, gorila"],
+    contoh:["Bu Gita menggoreng ikan gurame.",
+            "Mita minum menggunakan gelas kaca.",
+            "Mona melakukan gotong royong agar lingkungan bersih."] },
+  { t:"Menceritakan Kembali dengan Runtut",
+    isi:["Runtut artinya berurutan.",
+         "Peristiwa dalam teks harus diceritakan kembali secara urut.",
+         "Catatlah hal penting: tokoh, tempat, dan kejadian.",
+         "Ceritakan kembali dengan kata-katamu sendiri."],
+    contoh:["Pertama, siapkan gaco. Kedua, gambarlah kotak-kotak.",
+            "Ketiga, pemain melempar gaco ke kotak nomor satu."] },
+  { t:"Teks Bermain Engklek",
+    isi:["Engklek adalah permainan tradisional.",
+         "Gaco adalah batu atau pecahan genting.",
+         "Gaco digunakan sebagai alat lempar.",
+         "Semua pemain melakukan hompimpa untuk menentukan giliran.",
+         "Pemain melompat dengan satu kaki.",
+         "Kotak tempat gaco jatuh menjadi rumah pemain."],
+    contoh:["Pemenang engklek adalah pemain yang paling banyak memiliki rumah.",
+            "Engklek dan gaco adalah kata serapan dari bahasa Jawa."] },
+  { t:"Kata Serapan Bahasa Daerah",
+    isi:["Bahasa Indonesia menyerap kata dari bahasa daerah.",
+         "engklek dan gaco diserap dari bahasa Jawa.",
+         "Kata serapan tetap dipakai dalam cerita berbahasa Indonesia."],
+    contoh:["\"Ayo, kita bermain engklek di halaman!\"",
+            "Dona melempar gaco ke kotak nomor 1."] }
+];
+
+const MCQ4 = [
+  { q:"Gerakan menolakkan kaki ke atas sehingga badan melayang di udara disebut gerakan ....",
+    o:["lompat","jongkok","lari"], a:0 },
+  { q:"Nama bunga yang diawali suku kata ma- adalah ....",
+    o:["mawar","mahal","macan"], a:0 },
+  { q:"Nama hewan yang diawali suku kata mo- adalah ....",
+    o:["monyet","motor","mogok"], a:0 },
+  { q:"Nama hewan yang diawali suku kata ma- adalah ....",
+    o:["macan","merak","musang"], a:0 },
+  { q:"Pemain engklek ____ gaco ke kotak nomor 1.",
+    o:["melempar","mencari","mengambil"], a:0 },
+  { q:"Sebelum bermain engklek, semua pemain melakukan ....",
+    o:["hompimpa","lompatan","lemparan"], a:0 },
+  { q:"Gerakan dalam permainan engklek adalah ....",
+    o:["melompat","berenang","menari"], a:0 },
+  { q:"Kata \u201cmusang\u201d diawali suku kata ....",
+    o:["mu-","ma-","mo-"], a:0 },
+  { q:"Kata \u201cminyak\u201d diawali suku kata ....",
+    o:["mi-","mu-","me-"], a:0 },
+  { q:"Kata \u201cmeja\u201d diawali suku kata ....",
+    o:["me-","ma-","mi-"], a:0 },
+  { q:"Kata \u201cmobil\u201d diawali suku kata ....",
+    o:["mo-","mu-","ma-"], a:0 },
+  { q:"Kata \u201cmurah\u201d diawali suku kata ....",
+    o:["mu-","ma-","me-"], a:0 },
+  { q:"Kata yang diawali suku kata gi- adalah ....",
+    o:["gigi","gotong","garam"], a:0 },
+  { q:"Kata yang diawali suku kata gu- adalah ....",
+    o:["gunung","gelas","gajah"], a:0 },
+  { q:"Kata yang diawali suku kata ge- adalah ....",
+    o:["gelang","gula","gitar"], a:0 },
+  { q:"Kata yang diawali suku kata go- adalah ....",
+    o:["gorila","garam","gunung"], a:0 },
+  { q:"Runtut artinya ....",
+    o:["berurutan","berhenti","bernyanyi"], a:0 },
+  { q:"Gaco adalah ... dalam permainan engklek.",
+    o:["alat lempar","kotak permainan","tempat berdiri"], a:0 },
+  { q:"Kata \u201cengklek\u201d dan \u201cgaco\u201d diserap dari bahasa ....",
+    o:["Jawa","Sunda","Bali"], a:0 },
+  { q:"Kata \u201cgulai\u201d diawali suku kata ....",
+    o:["gu-","ga-","gi-"], a:0 },
+  { q:"Kata \u201cmerah\u201d diawali suku kata ....",
+    o:["me-","ma-","mu-"], a:0 },
+  { q:"Pemenang permainan engklek adalah pemain yang paling banyak memiliki ....",
+    o:["rumah","gaco","teman"], a:0 }
+];
+
+const BENARSALAH4 = [
+  { s:"Gaco adalah batu atau pecahan genting.", b:true, emoji:"🪨" },
+  { s:"Kata \u201cmawar\u201d diawali suku kata ma-.", b:true, emoji:"🌹" },
+  { s:"Kata \u201cmobil\u201d diawali suku kata mi-.", b:false, emoji:"🚗" },
+  { s:"Kata \u201cgajah\u201d diawali suku kata ga-.", b:true, emoji:"🐘" },
+  { s:"Kata \u201cgulai\u201d diawali suku kata gu-.", b:true, emoji:"🍲" },
+  { s:"Kata \u201cgelas\u201d diawali suku kata ge-.", b:true, emoji:"🥛" },
+  { s:"Kata \u201cgorila\u201d diawali suku kata ga-.", b:false, emoji:"🦍" },
+  { s:"Runtut artinya berurutan.", b:true, emoji:"🔢" },
+  { s:"Engklek adalah permainan tradisional.", b:true, emoji:"🦘" },
+  { s:"Permainan engklek dimainkan dengan berenang.", b:false, emoji:"🏊" },
+  { s:"Sebelum berlomba, kita harus berlatih.", b:true, emoji:"🏃" },
+  { s:"Saat menyimak cerita, kita boleh bersuara sendiri.", b:false, emoji:"🤭" }
+];
+
+const RIDDLE4 = [
+  { d:"Aku suku kata awal kata mawar, makan, dan madu. Siapakah aku?",
+    o:["ma- \u{1F339}","mi- \u{1F9F4}","mo- \u{1F697}"], a:0 },
+  { d:"Aku suku kata awal kata minyak, minum, dan mirip. Siapakah aku?",
+    o:["mi- \u{1F9F4}","mu- \u{1F994}","me- \u{1FA91}"], a:0 },
+  { d:"Aku suku kata awal kata musang, murah, dan muda. Siapakah aku?",
+    o:["mu- \u{1F994}","ma- \u{1F339}","mo- \u{1F697}"], a:0 },
+  { d:"Aku suku kata awal kata meja, merah, dan megah. Siapakah aku?",
+    o:["me- \u{1FA91}","mi- \u{1F9F4}","mu- \u{1F994}"], a:0 },
+  { d:"Aku suku kata awal kata mobil, motor, dan molen. Siapakah aku?",
+    o:["mo- \u{1F697}","ma- \u{1F339}","mu- \u{1F994}"], a:0 },
+  { d:"Aku suku kata awal kata garam, gajah, dan gayung. Siapakah aku?",
+    o:["ga- \u{1F418}","gi- \u{1F9B7}","gu- \u{1F34C}"], a:0 },
+  { d:"Aku suku kata awal kata gula, gunung, dan gulai. Siapakah aku?",
+    o:["gu- \u{1F34C}","ga- \u{1F418}","ge- \u{1F964}"], a:0 },
+  { d:"Aku suku kata awal kata gelas, gelang, dan gerak. Siapakah aku?",
+    o:["ge- \u{1F964}","gi- \u{1F9B7}","go- \u{1F98D}"], a:0 },
+  { d:"Aku suku kata awal kata gotong, gosok, dan gorila. Siapakah aku?",
+    o:["go- \u{1F98D}","gu- \u{1F34C}","ga- \u{1F418}"], a:0 },
+  { d:"Aku alat lempar dalam permainan engklek. Siapakah aku?",
+    o:["gaco \u{1FAA8}","gawang \u{1F945}","gasing \u{1F300}"], a:0 },
+  { d:"Aku permainan tradisional yang memakai kotak-kotak di tanah. Siapakah aku?",
+    o:["engklek \u{1F45F}","balap karung \u{1F45A}","lompat tali \u{1FA9D}"], a:0 }
+];
+
+const MATCH_SETS4 = [
+  { key:"sukuM4", label:"Cocokkan kata dengan suku kata awalnya (ma- mi- mu- me- mo-)", lc:"Kata", rc:"Suku kata",
+    auto:[
+      {l:"mawar",r:"ma-"},{l:"makan",r:"ma-"},{l:"madu",r:"ma-"},{l:"macan",r:"ma-"},
+      {l:"minyak",r:"mi-"},{l:"minum",r:"mi-"},{l:"mirip",r:"mi-"},
+      {l:"musang",r:"mu-"},{l:"murah",r:"mu-"},{l:"muda",r:"mu-"},
+      {l:"meja",r:"me-"},{l:"merah",r:"me-"},{l:"megah",r:"me-"},{l:"menang",r:"me-"},
+      {l:"mobil",r:"mo-"},{l:"motor",r:"mo-"},{l:"molen",r:"mo-"},{l:"monyet",r:"mo-"}
+    ] },
+  { key:"sukuG4", label:"Cocokkan kata dengan suku kata awalnya (ga- gi- gu- ge- go-)", lc:"Kata", rc:"Suku kata",
+    auto:[
+      {l:"garam",r:"ga-"},{l:"gayung",r:"ga-"},{l:"gajah",r:"ga-"},
+      {l:"gigi",r:"gi-"},{l:"gitar",r:"gi-"},
+      {l:"gula",r:"gu-"},{l:"gunung",r:"gu-"},{l:"gulai",r:"gu-"},{l:"gurame",r:"gu-"},{l:"gurih",r:"gu-"},
+      {l:"gelas",r:"ge-"},{l:"gelang",r:"ge-"},{l:"gerak",r:"ge-"},{l:"gemar",r:"ge-"},
+      {l:"gotong",r:"go-"},{l:"gosok",r:"go-"},{l:"gorila",r:"go-"}
+    ] },
+  { key:"gerakan4", label:"Cocokkan nama gerakan dengan gambarnya", lc:"Gerakan", rc:"Gambar",
+    auto:[
+      {l:"lari",r:"\u{1F3C3}"},{l:"jalan",r:"\u{1F6B6}"},{l:"lompat",r:"\u{1F998}"},
+      {l:"berdiri",r:"\u{1F9CD}"},{l:"duduk",r:"\u{1FA91}"},{l:"jongkok",r:"\u{1F9CE}"}
+    ] },
+  { key:"istilah4", label:"Cocokkan istilah dengan artinya", lc:"Istilah", rc:"Arti",
+    auto:[
+      {l:"gaco",r:"alat lempar dari batu"},{l:"hompimpa",r:"menentukan giliran"},
+      {l:"runtut",r:"berurutan"},{l:"engklek",r:"permainan tradisional"}
+    ] }
+];
+
+const FILL4 = [
+  { t:"Bu Gita menggoreng ikan ____.", o:["gurame","gelas","gigi"], a:0 },
+  { t:"Mita minum menggunakan ____ kaca.", o:["gelas","garam","gotong"], a:0 },
+  { t:"Mona melakukan ____ royong agar lingkungan bersih.", o:["gotong","gosok","gula"], a:0 },
+  { t:"Bumbu dapur yang rasanya asin adalah ____", o:["garam","gula","gajah"], a:0 },
+  { t:"Gisel selalu menggosok ____ sebelum tidur.", o:["gigi","gitar","gelang"], a:0 },
+  { t:"Pemain engklek melempar ____ ke kotak nomor 1.", o:["gaco","gawang","gasing"], a:0 },
+  { t:"Lebah dapat menghasilkan ____.", o:["madu","minyak","garam"], a:0 },
+  { t:"Ayah mengantar Adi ke sekolah naik ____.", o:["motor","meja","musang"], a:0 },
+  { t:"Setiap hari, aku ____ susu.", o:["minum","makan","mandi"], a:0 },
+  { t:"Semua pemain melakukan ____ sebelum permainan dimulai.", o:["hompimpa","upacara","senam"], a:0 }
+];
+
 /* ---------- Pilih bab ---------- */
 const BAB2_DATA = window.BINDO_DATA;
 const BAB3_DATA = { MATERI:MATERI3, MCQ:MCQ3, BENARSALAH:BENARSALAH3, RIDDLE:RIDDLE3,
                     MATCH_SETS:MATCH_SETS3, MATCH_PAIRS, FILL:FILL3, shuffle, pickN };
+const BAB4_DATA = { MATERI:MATERI4, MCQ:MCQ4, BENARSALAH:BENARSALAH4, RIDDLE:RIDDLE4,
+                    MATCH_SETS:MATCH_SETS4, MATCH_PAIRS, FILL:FILL4, shuffle, pickN };
 window.BINDO_BABS = [
   { nama:"Bab 2 · Mari Bermain", data:BAB2_DATA },
-  { nama:"Bab 3 · Suku Kata",    data:BAB3_DATA }
+  { nama:"Bab 3 · Suku Kata",    data:BAB3_DATA },
+  { nama:"Bab 4 · Aku Pasti Bisa", data:BAB4_DATA }
 ];

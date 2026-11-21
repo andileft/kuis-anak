@@ -3,7 +3,7 @@
 "use strict";
 
 /* ---------- data access ---------- */
-let D = window.BINDO_DATA;
+let D = null; // diisi dari bab yang dipilih (lihat renderBabBtns)
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
@@ -60,17 +60,26 @@ function confetti(n){
 /* ====================== HOME & MATERI =================== */
 /* ======================================================= */
 let quizCount=10;
-let curBab=window.BINDO_BABS[0];
+// bab terakhir = materi yang sedang dipelajari di sekolah (SAS berikutnya)
+let curBab=window.BINDO_BABS[window.BINDO_BABS.length-1];
+function syncBabUI(){
+  $(".subtitle").textContent=curBab.nama;
+  $(".topbar-title").textContent="Materi "+curBab.nama;
+  const bm=$("#btnMateri"); if(bm) bm.textContent="📖 Materi "+curBab.nama;
+}
 (function renderBabBtns(){
   const bb=$("#babBtns");
   if(!bb) return;
-  bb.innerHTML=window.BINDO_BABS.map((b,i)=>`<button data-i="${i}"${i===0?' class="sel"':''}>${b.nama}</button>`).join("");
+  const ci=window.BINDO_BABS.indexOf(curBab);
+  D=curBab.data;
+  bb.innerHTML=window.BINDO_BABS.map((b,i)=>`<button data-i="${i}"${i===ci?' class="sel"':''}>${b.nama}</button>`).join("");
+  syncBabUI();
   bb.addEventListener("click",e=>{
     const b=e.target.closest("button");if(!b)return;
     curBab=window.BINDO_BABS[+b.dataset.i];
     D=curBab.data;
       $$("#babBtns button").forEach(x=>x.classList.toggle("sel",x===b));
-    $("#btnMateri").textContent="📖 Materi "+curBab.nama;
+    $(".subtitle").textContent=curBab.nama;
     $(".topbar-title").textContent="Materi "+curBab.nama;
     FX.click();
   });

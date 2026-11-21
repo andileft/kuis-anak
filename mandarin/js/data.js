@@ -152,6 +152,80 @@ window.KUIS = {
         img: ["gambar2char", "gambar2arti", "dialog", "match"],
         write: ["char2write"]
       }
+    },
+    {
+      id: "bab4",
+      nama: "Bab 4 · Keluarga (Unit 5)",
+      kind: "kata",
+      judul: "Keluargaku (Unit 5)",
+      zh: "家 有 没有 几 口 人 爸爸 妈妈 哥哥 姐姐 弟弟 妹妹 两 和",
+      learnTitle: "Belajar Keluarga",
+      // Kosakata buku Unit 5 (你家有几个人?) + LKPD Bab 5 SD Stella Maris, 16 Nov 2026
+      items: [
+        { key: "jia",    char: "家",   pinyin: "jiā",    arti: "keluarga; rumah",        emoji: "🏠" },
+        { key: "you",    char: "有",   pinyin: "yǒu",    arti: "mempunyai; ada",         emoji: "👐" },
+        { key: "meiyou", char: "没有", pinyin: "méiyǒu", arti: "tidak punya",            emoji: "🚫" },
+        { key: "ji3",    char: "几",   pinyin: "jǐ",     arti: "berapa",                 emoji: "❓" },
+        { key: "kou",    char: "口",   pinyin: "kǒu",    arti: "mulut; kata penggolong", emoji: "👄" },
+        { key: "ren",    char: "人",   pinyin: "rén",    arti: "orang",                  emoji: "🧑" },
+        { key: "baba",   char: "爸爸", pinyin: "bàba",   arti: "ayah",                   emoji: "👨" },
+        { key: "mama",   char: "妈妈", pinyin: "māma",   arti: "ibu",                    emoji: "👩" },
+        { key: "gege",   char: "哥哥", pinyin: "gēge",   arti: "kakak laki-laki",        emoji: "👦" },
+        { key: "jiejie", char: "姐姐", pinyin: "jiějie", arti: "kakak perempuan",        emoji: "👧" },
+        { key: "didi",   char: "弟弟", pinyin: "dìdi",   arti: "adik laki-laki",         emoji: "🧒" },
+        { key: "meimei", char: "妹妹", pinyin: "mèimei", arti: "adik perempuan",         emoji: "👶" },
+        { key: "liang",  char: "两",   pinyin: "liǎng",  arti: "dua",                    emoji: "✌️" },
+        { key: "he",     char: "和",   pinyin: "hé",     arti: "dan",                    emoji: "➕" }
+      ],
+      // hanzi tunggal untuk latihan urutan guratan (buku Unit 5 h.50 + LKPD bagian III)
+      writeItems: [
+        { key: "w_jia",    char: "家", pinyin: "jiā",   arti: "keluarga; rumah" },
+        { key: "w_you",    char: "有", pinyin: "yǒu",   arti: "mempunyai; ada" },
+        { key: "w_mei",    char: "没", pinyin: "méi",   arti: "" },
+        { key: "w_ji",     char: "几", pinyin: "jǐ",    arti: "berapa" },
+        { key: "w_kou",    char: "口", pinyin: "kǒu",   arti: "mulut; kata penggolong" },
+        { key: "w_ren",    char: "人", pinyin: "rén",   arti: "orang" },
+        { key: "w_ba",     char: "爸", pinyin: "bà",    arti: "" },
+        { key: "w_ma",     char: "妈", pinyin: "mā",    arti: "" },
+        { key: "w_ge",     char: "哥", pinyin: "gē",    arti: "" },
+        { key: "w_jie",    char: "姐", pinyin: "jiě",   arti: "" },
+        { key: "w_di",     char: "弟", pinyin: "dì",    arti: "" },
+        { key: "w_meimei", char: "妹", pinyin: "mèi",   arti: "" },
+        { key: "w_liang",  char: "两", pinyin: "liǎng", arti: "dua" },
+        { key: "w_he",     char: "和", pinyin: "hé",    arti: "dan" }
+      ],
+      // kalimat kunci LKPD bagian II (a-e) dan bagian 11-15
+      dialogs: [
+        { speaker: "👩", bubble: "你家有几口人？", note: "(Bu Guru bertanya: berapa orang di rumahmu?)", answer: "我家有四口人。", opts: ["我家有四口人。", "我有四个弟弟。", "我家有四口妹妹。"] },
+        { speaker: "🧒", bubble: "你有弟弟吗？", note: "(Elle belum punya adik)", answer: "我没有弟弟。", opts: ["我没有弟弟。", "我有一个弟弟。", "我有两个弟弟。"] },
+        { speaker: "🧒", bubble: "你有姐姐吗？", note: "(Elle punya satu kakak perempuan, Stella)", answer: "我有一个姐姐。", opts: ["我有一个姐姐。", "我有一个哥哥。", "我有三个姐姐。"] },
+        { speaker: "🧑", bubble: "Mikha 有三个妹妹。", note: "(artinya…)", answer: "Mikha punya tiga adik perempuan.", opts: ["Mikha punya tiga adik perempuan.", "Mikha punya tiga kakak perempuan.", "Mikha punya dua adik perempuan."] },
+        { speaker: "👦", bubble: "她有两个姐姐。", note: "(artinya…)", answer: "Dia (perempuan) punya dua kakak perempuan.", opts: ["Dia (perempuan) punya dua kakak perempuan.", "Dia (laki-laki) punya dua adik perempuan.", "Dia punya dua kakak laki-laki."] },
+        { speaker: "👧", bubble: "我家有四口人。", note: "(artinya…)", answer: "Keluarga saya ada empat orang.", opts: ["Keluarga saya ada empat orang.", "Keluarga saya ada tiga orang.", "Saya punya empat adik."] },
+        { speaker: "🧒", bubble: "你家有几口人？", note: "(Dita hanya tinggal dengan ayah dan ibu)", answer: "我家有三口人。", opts: ["我家有三口人。", "我家有四口人。", "我家有两口人。"] },
+        { speaker: "👦", bubble: "我有一个弟弟。", note: "(artinya…)", answer: "Saya punya satu adik laki-laki.", opts: ["Saya punya satu adik laki-laki.", "Saya punya satu kakak laki-laki.", "Saya tidak punya adik."] },
+        { speaker: "🧒", bubble: "这个字怎么读？——和", note: "(cara baca hanzi 'dan')", answer: "hé", opts: ["hé", "jǐ", "liǎng"] },
+        { speaker: "🧒", bubble: "这个字怎么读？——几", note: "(cara baca hanzi 'berapa')", answer: "jǐ", opts: ["jǐ", "hé", "kǒu"] },
+        { speaker: "🧒", bubble: "这个字怎么读？——家", note: "(cara baca hanzi 'keluarga')", answer: "jiā", opts: ["jiā", "rén", "kǒu"] }
+      ],
+      matchSchemas: [
+        { id: "tulisan-arti",   l: "char",   r: "arti",   label: "Cocokkan tulisan dengan artinya" },
+        { id: "tulisan-pinyin", l: "char",   r: "pinyin", label: "Cocokkan tulisan dengan cara bacanya" },
+        { id: "pinyin-arti",    l: "pinyin", r: "arti",   label: "Cocokkan cara baca dengan artinya" },
+        { id: "arti-tulisan",   l: "arti",   r: "char",   label: "Cocokkan arti dengan tulisannya" },
+        { id: "pinyin-tulisan", l: "pinyin", r: "char",   label: "Cocokkan cara baca dengan tulisannya" },
+        { id: "arti-pinyin",    l: "arti",   r: "pinyin", label: "Cocokkan arti dengan cara bacanya" },
+        { id: "campur",         l: "mix",    r: "mix",    label: "Cocokkan tulisan, cara baca, dan artinya" }
+      ],
+      matchSize: 4,
+      modes: {
+        all: ["char2arti", "char2py", "arti2char", "pinyin2char", "arti2pinyin", "audio2arti", "match",
+              "stroke2arti", "gambar2char", "gambar2arti", "dialog", "char2write"],
+        imgwrite: ["gambar2char", "gambar2arti", "dialog", "match", "char2write"],
+        img: ["gambar2char", "gambar2arti", "dialog", "match"],
+        write: ["char2write"]
+      }
     }
   ]
 };
+

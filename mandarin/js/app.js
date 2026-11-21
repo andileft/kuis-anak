@@ -121,7 +121,7 @@
   /* ======================================================= */
   /* ====================== STATE ========================== */
   /* ======================================================= */
-  let lesson = byId["bab2"] || byId[LESSONS[0].id];   // default: bab 2 (Salam) — bab 1 tetap bisa dipilih
+  let lesson = LESSONS[LESSONS.length - 1];   // default: bab terakhir = materi terbaru (SAS berikutnya)
   let quizMode = "all";
   let quizCount = 10;
   let writeCount = 5;
