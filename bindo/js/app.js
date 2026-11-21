@@ -65,6 +65,7 @@ let curBab=window.BINDO_BABS[window.BINDO_BABS.length-1];
 function syncBabUI(){
   $(".subtitle").textContent=curBab.nama;
   $(".topbar-title").textContent="Materi "+curBab.nama;
+  const z=$(".zh"); if(z && D && D.MATERI) z.textContent=D.MATERI.map(m=>m.t).join(" • ");
   const bm=$("#btnMateri"); if(bm) bm.textContent="📖 Materi "+curBab.nama;
 }
 (function renderBabBtns(){
@@ -79,8 +80,7 @@ function syncBabUI(){
     curBab=window.BINDO_BABS[+b.dataset.i];
     D=curBab.data;
       $$("#babBtns button").forEach(x=>x.classList.toggle("sel",x===b));
-    $(".subtitle").textContent=curBab.nama;
-    $(".topbar-title").textContent="Materi "+curBab.nama;
+    syncBabUI();
     FX.click();
   });
 })();

@@ -50,6 +50,15 @@ html, body {
 }
 .count-btns button.sel { background:var(--gold); box-shadow:0 4px 0 var(--gold-d); transform:scale(1.08); }
 
+/* tombol "Pilih bab": labelnya panjang, jadi lebar ikut isi (bukan kotak 56px) */
+.chapter-btns { flex-wrap:wrap; gap:8px; }
+.chapter-btns button {
+  width:auto; height:auto; min-width:0;
+  padding:10px 14px; border-radius:14px;
+  font-size:14px; line-height:1.25; white-space:nowrap;
+}
+.chapter-btns button.sel { transform:none; }
+
 .big-btn {
   display:block; width:min(88%,380px); margin:14px auto; padding:18px; border:none;
   border-radius:20px; font-size:25px; font-weight:800; color:#fff; cursor:pointer;
