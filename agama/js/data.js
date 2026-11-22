@@ -302,7 +302,13 @@ Object.assign(BODY, {
   terang:   { emoji:"💡",  name:"Terang" },
   laut:     { emoji:"🌊",  name:"Laut" },
   burung:   { emoji:"🐦",  name:"Burung" },
-  orangtua: { emoji:"👨‍👩‍👧", name:"Ayah dan Ibu" }
+  orangtua: { emoji:"👨‍👩‍👧", name:"Ayah dan Ibu" },
+  hari1:    { emoji:"💡", name:"Hari ke-1" },
+  hari2:    { emoji:"☁️", name:"Hari ke-2" },
+  hari3:    { emoji:"🌿", name:"Hari ke-3" },
+  hari4:    { emoji:"☀️", name:"Hari ke-4" },
+  hari5:    { emoji:"🐟", name:"Hari ke-5" },
+  hari6:    { emoji:"🐘", name:"Hari ke-6" }
 });
 
 const MCQ3 = [
@@ -378,7 +384,13 @@ const MATCH_PAIRS3 = [
   { k:"rumah",    f:"Allah menciptakan rumah." },
   { k:"menjaga",  f:"Manusia harus menjaga ciptaan Allah." },
   { k:"berdoa",   f:"Manusia harus berdoa kepada Allah." },
-  { k:"sayang",   f:"Kita harus menyayangi semua ciptaan Allah." }
+  { k:"sayang",   f:"Kita harus menyayangi semua ciptaan Allah." },
+  { k:"hari1",    f:"Hari ke-1: Allah menciptakan terang dan gelap." },
+  { k:"hari2",    f:"Hari ke-2: Allah menciptakan cakrawala (langit)." },
+  { k:"hari3",    f:"Hari ke-3: Allah menciptakan darat, laut, dan tumbuhan." },
+  { k:"hari4",    f:"Hari ke-4: Allah menciptakan matahari, bulan, dan bintang." },
+  { k:"hari5",    f:"Hari ke-5: Allah menciptakan ikan dan burung." },
+  { k:"hari6",    f:"Hari ke-6: Allah menciptakan hewan darat dan manusia." }
 ];
 
 const FILL3 = [
