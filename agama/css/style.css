@@ -120,6 +120,7 @@ html, body {
   font-size:14px; line-height:1.2; min-height:44px; display:flex; align-items:center; justify-content:center;
 }
 .match-left .item .em{ font-size:22px; margin-right:5px; }
+.match-left .item .mimg{ display:block; width:100%; max-width:120px; height:52px; object-fit:contain; border-radius:8px; background:#fff; margin:0 auto; }
 .match-right .item{ background:#fdf6e3; }
 .match-left .item.sel { background:var(--gold); color:#fff; transform:scale(1.04); box-shadow:0 4px 0 var(--gold-d); }
 .match-left .item.done, .match-right .item.done { background:var(--green)!important; color:#fff; cursor:default; box-shadow:0 3px 0 var(--green-d); }

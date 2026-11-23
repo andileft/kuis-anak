@@ -131,10 +131,22 @@ function startQuiz(){
 function buildMatchVariants(){
   const variants=[];
   const seen=new Set();
-  for(let attempt=0; attempt<200 && variants.length<10; attempt++){
-    const sub=D.pickN(D.MATCH_PAIRS,4);
-    const key=sub.map(p=>p.k).sort().join("|");
-    if(!seen.has(key)){seen.add(key);variants.push(sub);}
+  const addVariants=(pool,count)=>{
+    for(let attempt=0; attempt<300 && count>0; attempt++){
+      const sub=D.pickN(pool,4);
+      const key=sub.map(p=>p.k).sort().join("|");
+      if(!seen.has(key)){seen.add(key);variants.push(sub);count--;}
+    }
+  };
+  // Tema TIDAK pernah dicampur dalam satu ronde: setengah varian murni
+  // dari tema utama (MATCH_PAIRS), setengah murni dari tema gambar LKPD
+  // (MATCH_PAIRS_IMG) kalau unitnya menyediakan.
+  const imgPool=D.MATCH_PAIRS_IMG;
+  if(imgPool && imgPool.length>=4){
+    addVariants(D.MATCH_PAIRS,5);
+    addVariants(imgPool,5);
+  }else{
+    addVariants(D.MATCH_PAIRS,10);
   }
   return variants;
 }
@@ -179,7 +191,7 @@ function makeQuestion(type,picked){
   }
   if(type==="match"){
     const pairs=picked; // subset 4 pasangan unik
-    const left=D.shuffle(pairs.map(p=>({k:p.k,emoji:d.BODY[p.k].emoji,name:d.BODY[p.k].name,f:p.f})));
+    const left=D.shuffle(pairs.map(p=>({k:p.k,emoji:d.BODY[p.k].emoji,name:d.BODY[p.k].name,img:d.BODY[p.k].img,f:p.f})));
     const right=D.shuffle(pairs.map(p=>({f:p.f,k:p.k})));
     return {type:"match",pairs,left,right};
   }
@@ -314,7 +326,9 @@ function renderQuestion(){
     q.left.forEach(o=>{
       const it=document.createElement("div");
       it.className="item";it.dataset.k=o.k;it.dataset.f=o.f;
-      it.innerHTML="<span class='em'>"+o.emoji+"</span>"+o.name;
+      it.innerHTML=o.img
+        ? "<img class='mimg' src='"+o.img+"' alt=''>"
+        : "<span class='em'>"+o.emoji+"</span>"+o.name;
       colL.appendChild(it);
     });
     q.right.forEach(o=>{

@@ -287,15 +287,15 @@ const AYAT1 = [
 /* ======================================================= */
 
 Object.assign(BODY, {
-  matahari: { emoji:"☀️",  name:"Matahari" },
-  bumi:     { emoji:"🌍",  name:"Bumi" },
-  manusia:  { emoji:"👫",  name:"Manusia" },
-  langit:   { emoji:"☁️",  name:"Langit" },
-  hewan:    { emoji:"🐘",  name:"Hewan" },
-  tanaman:  { emoji:"🌺",  name:"Pohon & Bunga" },
-  berdoa:   { emoji:"🙏",  name:"Berdoa" },
-  menjaga:  { emoji:"🌱",  name:"Menjaga Ciptaan" },
-  sayang:   { emoji:"❤️",  name:"Menyayangi Ciptaan" },
+  matahari: { emoji:"☀️",  name:"Matahari", img:"assets/lkpd3/matahari.png" },
+  bumi:     { emoji:"🌍",  name:"Bumi",     img:"assets/lkpd3/bumi.png" },
+  manusia:  { emoji:"👫",  name:"Manusia",  img:"assets/lkpd3/manusia.png" },
+  langit:   { emoji:"☁️",  name:"Langit",   img:"assets/lkpd3/langit.png" },
+  hewan:    { emoji:"🐘",  name:"Hewan",    img:"assets/lkpd3/hewan.png" },
+  tanaman:  { emoji:"🌺",  name:"Pohon & Bunga", img:"assets/lkpd3/tanaman.png" },
+  berdoa:   { emoji:"🙏",  name:"Berdoa",   img:"assets/lkpd3/berdoa.png" },
+  menjaga:  { emoji:"🌱",  name:"Menjaga Ciptaan", img:"assets/lkpd3/menjaga.png" },
+  sayang:   { emoji:"❤️",  name:"Menyayangi Ciptaan", img:"assets/lkpd3/sayang.png" },
   adam:     { emoji:"👨",  name:"Adam" },
   hawa:     { emoji:"👩",  name:"Hawa" },
   eden:     { emoji:"🌷",  name:"Taman Eden" },
@@ -375,6 +375,24 @@ const RIDDLE3 = [
 ];
 
 const MATCH_PAIRS3 = [
+  // Matching murni tema hari penciptaan: tiap ronde pickN(4) hanya menarik
+  // pasangan hari 1-6, jadi tidak tercampur pasangan lain. Kolom kanan sengaja
+  // TIDAK menyebut "Hari ke-N" — anak harus ingat isinya, bukan nyocokin angka.
+  // Pasangan non-hari-penciptaan dipindah ke MATCH_PAIRS3_LAIN (tidak diacak
+  // ke sesi matching; disimpan untuk materi lanjutan).
+  { k:"hari1",    f:"Allah menciptakan terang dan gelap." },
+  { k:"hari2",    f:"Allah menciptakan cakrawala tempat awan bergantung." },
+  { k:"hari3",    f:"Allah menciptakan darat, laut, dan tumbuhan." },
+  { k:"hari4",    f:"Allah menciptakan matahari, bulan, dan bintang." },
+  { k:"hari5",    f:"Allah menciptakan ikan dan burung." },
+  { k:"hari6",    f:"Allah menciptakan hewan darat dan manusia." }
+];
+
+/* Tema match kedua: soal menjodohkan gambar dari LKPD Formatif 3.
+   Kolom kiri = gambar asli LKPD (crop di assets/lkpd3/, BODY[k].img),
+   kolom kanan = kalimat persis seperti di LKPD. Tidak pernah dicampur
+   dengan pasangan hari penciptaan dalam satu ronde (lihat app.js). */
+const MATCH_PAIRS3_IMG = [
   { k:"matahari", f:"Allah menciptakan matahari." },
   { k:"bumi",     f:"Allah menciptakan bumi." },
   { k:"manusia",  f:"Allah menciptakan manusia." },
@@ -384,13 +402,7 @@ const MATCH_PAIRS3 = [
   { k:"rumah",    f:"Allah menciptakan rumah." },
   { k:"menjaga",  f:"Manusia harus menjaga ciptaan Allah." },
   { k:"berdoa",   f:"Manusia harus berdoa kepada Allah." },
-  { k:"sayang",   f:"Kita harus menyayangi semua ciptaan Allah." },
-  { k:"hari1",    f:"Hari ke-1: Allah menciptakan terang dan gelap." },
-  { k:"hari2",    f:"Hari ke-2: Allah menciptakan cakrawala (langit)." },
-  { k:"hari3",    f:"Hari ke-3: Allah menciptakan darat, laut, dan tumbuhan." },
-  { k:"hari4",    f:"Hari ke-4: Allah menciptakan matahari, bulan, dan bintang." },
-  { k:"hari5",    f:"Hari ke-5: Allah menciptakan ikan dan burung." },
-  { k:"hari6",    f:"Hari ke-6: Allah menciptakan hewan darat dan manusia." }
+  { k:"sayang",   f:"Kita harus menyayangi semua ciptaan Allah." }
 ];
 
 const FILL3 = [
@@ -433,7 +445,7 @@ window.AGAMA_UNITS = [
   { id:"bab3", label:"Bab 3 · Allah Sang Pencipta",
     sub:"Allah Sang Pencipta Alam Semesta & Manusia",
     zh:"6 Hari Penciptaan • Adam & Hawa di Taman Eden • Merawat Bumi & Menghormati Orang Tua",
-    data:{ BODY:BODY, MCQ:MCQ3, GOODBAD:GOODBAD3, RIDDLE:RIDDLE3, MATCH_PAIRS:MATCH_PAIRS3, FILL:FILL3, shuffle:shuffle, pickN:pickN },
+    data:{ BODY:BODY, MCQ:MCQ3, GOODBAD:GOODBAD3, RIDDLE:RIDDLE3, MATCH_PAIRS:MATCH_PAIRS3, MATCH_PAIRS_IMG:MATCH_PAIRS3_IMG, FILL:FILL3, shuffle:shuffle, pickN:pickN },
     ayat:AYAT3,
     matchPrompt:"Tap ciptaan di kiri, lalu tap pernyataan yang tepat di kanan",
     colL:"Ciptaan", colR:"Pernyataan" }
