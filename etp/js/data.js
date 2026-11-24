@@ -222,4 +222,198 @@ const FILL = [
   { t:"Beri tanda bintang pada KEINGINAN. ____ termasuk keinginan.", o:["Permen","Nasi","Rumah"], a:0 }
 ];
 
-window.ETP_DATA = { MATERI, MCQ, BENARSALAH, RIDDLE, MATCH_SETS, MATCH_PAIRS, FILL, shuffle, pickN };
+/* ======================================================= */
+/* ===== BAB 3 : Memenuhi Kebutuhanku ===================== */
+/* Sumber: LATIHAN SOAL ETP BAB 3 (SD Stella Maris, Bu Anggi
+   & Sr. Anselina, T.P. 2026-2027) + LKPD "Tempat dan Layanan
+   Kebutuhan" + LKPD "Ayo Berlatih Komunikasi antara Penjual
+   dan Pembeli" (Quintal). Sumatif SAS: Rabu 25 November 2026. */
+/* ======================================================= */
+
+const MATERI3 = [
+  { t:"Apa Itu Kebutuhan?",
+    isi:["Kebutuhan adalah barang-barang yang DIBUTUHKAN untuk bertahan hidup.",
+         "Tanpa kebutuhan, kita tidak bisa hidup dengan baik.",
+         "Contoh kebutuhan: makanan, pakaian, tempat tinggal, air bersih."],
+    contoh:["Makanan - agar kita tidak lapar.","Pakaian - agar tubuh terlindungi.","Air bersih - agar tubuh sehat."] },
+  { t:"Apa Itu Keinginan?",
+    isi:["Keinginan adalah barang-barang yang bisa DITUNDA dahulu.",
+         "Keinginan tidak harus dipenuhi sekarang.",
+         "Kebutuhan harus didahulukan, keinginan bisa ditunda."],
+    contoh:["Mainan baru - bisa ditunda.","Permen - bisa ditunda.","Sepeda baru - bisa ditunda."] },
+  { t:"Kebutuhan Dipenuhi dengan Dibeli atau Dibuat",
+    isi:["Ada barang yang dipenuhi dengan cara DIBELI.",
+         "Ada barang yang dipenuhi dengan cara DIBUAT sendiri.",
+         "Nasi goreng dan telur mata sapi dipenuhi dengan cara dibeli (sudah jadi).",
+         "Gelang dan tas sekolah bisa dipenuhi dengan cara dibuat."],
+    contoh:["Dibeli: nasi goreng, telur mata sapi, baju.","Dibuat: gelang, tas sekolah, hiasan."] },
+  { t:"Barang Kebutuhan Ibu Memasak",
+    isi:["Ibu memasak membutuhkan bahan makanan.",
+         "Contohnya beras, sayur, minyak goreng, dan bumbu dapur.",
+         "Alat memasak seperti panci dan wajan juga dibutuhkan ibu."],
+    contoh:["Bahan: beras, sayur, minyak goreng.","Alat: panci, wajan, spatula."] },
+  { t:"Layanan di Sekitar Kita",
+    isi:["Layanan adalah jasa yang diberikan untuk memenuhi kebutuhan.",
+         "Ada layanan kesehatan, pendidikan, perbankan, transportasi, dan air bersih.",
+         "Rumah sakit dan puskesmas memberi layanan KESEHATAN.",
+         "Sekolah memberi layanan PENDIDIKAN.",
+         "Bank memberi layanan PERBANKAN (tempat menabung uang).",
+         "Bus sekolah dan angkutan memberi layanan TRANSPORTASI.",
+         "PDAM memberi layanan AIR BERSIH (untuk mandi dan minum)."],
+    contoh:["Rumah sakit -> kesehatan.","Sekolah -> pendidikan.","Bank -> perbankan.",
+            "Bus sekolah -> transportasi.","PDAM -> air bersih."] },
+  { t:"Tempat dan Layanan Kebutuhan",
+    isi:["Setiap tempat menyediakan layanan atau barang tertentu.",
+         "HOTEL menyediakan penginapan untuk orang yang bepergian.",
+         "BAKERY / toko roti menjual roti.",
+         "BOOK STORE menjual buku.",
+         "LAUNDRY mencuci pakaian.",
+         "SCHOOL memberi pendidikan.",
+         "BANK melayani simpan uang."],
+    contoh:["Hotel -> orang bepergian (koper).","Bakery -> roti.","Book store -> buku.",
+            "Laundry -> pakaian kotor.","School -> anak sekolah.","Bank -> uang."] },
+  { t:"Penjual dan Pembeli",
+    isi:["PENJUAL adalah orang yang menawarkan dan menjual barang.",
+         "PEMBELI adalah orang yang membutuhkan dan membeli barang.",
+         "Penjual menawarkan barang dengan kalimat yang sopan dan ramah.",
+         "Pembeli bertanya harga dan meminta barang yang dibutuhkan.",
+         "Setelah membayar, pembeli mengucapkan terima kasih."],
+    contoh:["Penjual: \u201cSilakan mampir, Bu. Buahnya segar dan manis!\u201d",
+            "Pembeli: \u201cSaya mau beli apel satu kilo, berapa harganya?\u201d",
+            "Pembeli: \u201cTerima kasih, Pak.\u201d"] }
+];
+
+const MCQ3 = [
+  { q:"Kebutuhan adalah barang-barang yang ____ untuk bertahan hidup.",
+    o:["dibutuhkan","dibeli","dijual"], a:0 },
+  { q:"Keinginan adalah barang-barang yang bisa ____ dahulu.",
+    o:["ditunda","dibeli","dijual"], a:0 },
+  { q:"Contoh barang yang digolongkan sebagai kebutuhan ibu memasak adalah ....",
+    o:["beras dan sayur","robot mainan","permen"], a:0 },
+  { q:"Barang yang bisa dipenuhi dengan cara DIBELI adalah ....",
+    o:["nasi goreng","baju","gelang"], a:0 },
+  { q:"Barang yang bisa dipenuhi dengan cara DIBUAT adalah ....",
+    o:["gelang","nasi goreng","telur mata sapi"], a:0 },
+  { q:"Rumah sakit termasuk layanan ____.", o:["kesehatan","pendidikan","perbankan"], a:0 },
+  { q:"Murid dan guru menggunakan layanan ____.", o:["pendidikan","kesehatan","transportasi"], a:0 },
+  { q:"Menabung uang dilakukan di layanan ____.", o:["perbankan","kesehatan","pendidikan"], a:0 },
+  { q:"Bus sekolah termasuk layanan ____.", o:["transportasi","perbankan","air bersih"], a:0 },
+  { q:"Mandi memanfaatkan layanan ____.", o:["air bersih","perbankan","pendidikan"], a:0 },
+  { q:"Hotel menyediakan layanan ____ untuk orang yang bepergian.",
+    o:["penginapan","pendidikan","kesehatan"], a:0 },
+  { q:"Toko roti (bakery) menjual ____.", o:["roti","buku","pakaian"], a:0 },
+  { q:"Book store adalah toko yang menjual ____.", o:["buku","roti","uang"], a:0 },
+  { q:"Laundry adalah tempat layanan mencuci ____.", o:["pakaian","mobil","piring"], a:0 },
+  { q:"Sekolah memberikan layanan ____.", o:["pendidikan","penginapan","perbankan"], a:0 },
+  { q:"Bank melayani kebutuhan ____.", o:["menyimpan uang","menjual roti","mencuci pakaian"], a:0 },
+  { q:"Orang yang menawarkan dan menjual barang disebut ____.",
+    o:["penjual","pembeli","penonton"], a:0 },
+  { q:"Orang yang membeli barang untuk memenuhi kebutuhan disebut ____.",
+    o:["pembeli","penjual","petugas"], a:0 },
+  { q:"Kalimat penjual yang tepat saat menawarkan barang adalah ____.",
+    o:["Silakan mampir, Bu. Buahnya segar dan manis!","Jangan beli di sini!","Saya tidak mau melayani."], a:0 },
+  { q:"Kalimat pembeli yang tepat saat membutuhkan barang adalah ____.",
+    o:["Saya mau beli apel satu kilo, berapa harganya?","Buang saja barangnya!","Saya tidak butuh apa-apa."], a:0 },
+  { q:"Setelah membayar barang, sebaiknya pembeli mengucapkan ____.",
+    o:["terima kasih","kemarahan","keluhan"], a:0 },
+  { q:"Penjual sebaiknya melayani pembeli dengan sikap ____.",
+    o:["sopan dan ramah","marah","acuh tak acuh"], a:0 }
+];
+
+const BENARSALAH3 = [
+  { s:"Kebutuhan adalah barang-barang yang dibutuhkan untuk bertahan hidup.", b:true,  emoji:"🍚" },
+  { s:"Keinginan harus didahulukan daripada kebutuhan.", b:false, emoji:"⭐" },
+  { s:"Keinginan adalah barang-barang yang bisa ditunda.", b:true,  emoji:"⏳" },
+  { s:"Rumah sakit termasuk layanan pendidikan.", b:false, emoji:"🏥" },
+  { s:"Sekolah termasuk layanan pendidikan.", b:true,  emoji:"🏫" },
+  { s:"Menabung uang dilakukan di bank.", b:true,  emoji:"🏦" },
+  { s:"Bus sekolah termasuk layanan transportasi.", b:true,  emoji:"🚌" },
+  { s:"Mandi memanfaatkan layanan air bersih.", b:true,  emoji:"🚿" },
+  { s:"Nasi goreng termasuk barang yang dipenuhi dengan cara dibuat sendiri.", b:false, emoji:"🍛" },
+  { s:"Gelang termasuk barang yang bisa dipenuhi dengan cara dibuat.", b:true,  emoji:"📿" },
+  { s:"Hotel menyediakan layanan pendidikan.", b:false, emoji:"🏨" },
+  { s:"Laundry adalah layanan mencuci pakaian.", b:true,  emoji:"👕" },
+  { s:"Book store menjual roti.", b:false, emoji:"📚" },
+  { s:"Penjual adalah orang yang membeli barang.", b:false, emoji:"🛍️" },
+  { s:"Pembeli adalah orang yang membutuhkan dan membeli barang.", b:true,  emoji:"🧑" },
+  { s:"Penjual sebaiknya melayani pembeli dengan sopan dan ramah.", b:true,  emoji:"😊" },
+  { s:"Beras dan sayur adalah kebutuhan ibu untuk memasak.", b:true,  emoji:"🥬" },
+  { s:"Permen termasuk kebutuhan yang harus didahulukan.", b:false, emoji:"🍬" },
+  { s:"Bank melayani kebutuhan menyimpan uang.", b:true,  emoji:"💵" },
+  { s:"Setelah membeli barang, kita mengucapkan terima kasih.", b:true,  emoji:"🙏" }
+];
+
+const RIDDLE3 = [
+  { d:"Aku adalah barang-barang yang dibutuhkan untuk bertahan hidup. Contohku makanan, pakaian, dan tempat tinggal. Siapakah aku?",
+    o:["kebutuhan 🍚","keinginan ⭐","layanan 🏥"], a:0 },
+  { d:"Aku adalah barang-barang yang bisa ditunda dahulu. Contohku mainan baru dan permen. Siapakah aku?",
+    o:["keinginan ⭐","kebutuhan 🍚","kebutuhan pokok 🥇"], a:0 },
+  { d:"Aku memberi layanan kesehatan. Orang sakit datang kepadaku. Siapakah aku?",
+    o:["rumah sakit 🏥","sekolah 🏫","bank 🏦"], a:0 },
+  { d:"Aku memberi layanan pendidikan. Murid dan guru ada di dalamku. Siapakah aku?",
+    o:["sekolah 🏫","hotel 🏨","laundry 👕"], a:0 },
+  { d:"Aku tempat menabung uang. Siapakah aku?", o:["bank 🏦","bakery 🥖","book store 📚"], a:0 },
+  { d:"Aku memberi layanan transportasi. Aku mengantar murid ke sekolah. Siapakah aku?",
+    o:["bus sekolah 🚌","hotel 🏨","bank 🏦"], a:0 },
+  { d:"Aku memberi layanan air bersih untuk mandi dan minum. Siapakah aku?",
+    o:["PDAM / layanan air bersih 🚿","laundry 👕","bank 🏦"], a:0 },
+  { d:"Aku tempat orang yang bepergian menginap. Siapakah aku?",
+    o:["hotel 🏨","sekolah 🏫","book store 📚"], a:0 },
+  { d:"Aku toko yang menjual roti. Siapakah aku?", o:["bakery 🥖","book store 📚","laundry 👕"], a:0 },
+  { d:"Aku layanan mencuci pakaian. Siapakah aku?", o:["laundry 👕","bank 🏦","hotel 🏨"], a:0 },
+  { d:"Aku orang yang menawarkan dan menjual barang. Siapakah aku?", o:["penjual 🧑‍🍳","pembeli 🛍️","murid 🎒"], a:0 },
+  { d:"Aku orang yang membeli barang untuk memenuhi kebutuhan. Siapakah aku?", o:["pembeli 🛍️","penjual 🧑‍🍳","guru 👩‍🏫"], a:0 }
+];
+
+const MATCH_SETS3 = [
+  { key:"layanan", label:"Cocokkan tempat dengan layanannya", lc:"Tempat", rc:"Layanannya", per:3, bonus:1,
+    sets:[
+      [ {l:"rumah sakit",r:"kesehatan"},{l:"sekolah",r:"pendidikan"},{l:"bank",r:"perbankan"} ],
+      [ {l:"bus sekolah",r:"transportasi"},{l:"PDAM",r:"air bersih"},{l:"rumah sakit",r:"kesehatan"} ],
+      [ {l:"sekolah",r:"pendidikan"},{l:"bank",r:"perbankan"},{l:"PDAM",r:"air bersih"} ]
+    ] },
+  { key:"tempat-barang", label:"Cocokkan tempat dengan barangnya", lc:"Tempat", rc:"Barangnya", per:3, bonus:1,
+    sets:[
+      [ {l:"bakery",r:"roti"},{l:"book store",r:"buku"},{l:"laundry",r:"pakaian"} ],
+      [ {l:"hotel",r:"kamar penginapan"},{l:"bakery",r:"roti"},{l:"book store",r:"buku"} ],
+      [ {l:"laundry",r:"pakaian"},{l:"hotel",r:"kamar penginapan"},{l:"bank",r:"uang"} ]
+    ] },
+  { key:"kebutuhan", label:"Cocokkan barang dengan caranya", lc:"Barang", rc:"Cara memenuhinya", per:4, bonus:2,
+    sets:[
+      [ {l:"nasi goreng",r:"dibeli"},{l:"gelang",r:"dibuat"} ],
+      [ {l:"telur mata sapi",r:"dibeli"},{l:"tas sekolah",r:"dibuat"} ],
+      [ {l:"baju",r:"dibeli"},{l:"hiasan",r:"dibuat"} ]
+    ] }
+];
+
+const FILL3 = [
+  { t:"Kebutuhan adalah barang-barang yang ____ untuk bertahan hidup.", o:["dibutuhkan","dijual","dibuang"], a:0 },
+  { t:"Keinginan adalah barang-barang yang bisa ____ dahulu.", o:["ditunda","didahulukan","dipaksa"], a:0 },
+  { t:"Rumah sakit termasuk layanan ____.", o:["kesehatan","pendidikan","perbankan"], a:0 },
+  { t:"Murid dan guru menggunakan layanan ____.", o:["pendidikan","kesehatan","transportasi"], a:0 },
+  { t:"Menabung uang dilakukan di layanan ____.", o:["perbankan","kesehatan","pendidikan"], a:0 },
+  { t:"Bus sekolah termasuk layanan ____.", o:["transportasi","perbankan","air bersih"], a:0 },
+  { t:"Mandi memanfaatkan layanan ____.", o:["air bersih","pendidikan","perbankan"], a:0 },
+  { t:"Hotel menyediakan layanan ____.", o:["penginapan","pendidikan","kesehatan"], a:0 },
+  { t:"Laundry adalah layanan mencuci ____.", o:["pakaian","piring","mobil"], a:0 },
+  { t:"Orang yang menawarkan barang disebut ____.", o:["penjual","pembeli","penonton"], a:0 },
+  { t:"Orang yang membeli barang disebut ____.", o:["pembeli","penjual","petugas"], a:0 },
+  { t:"Nasi goreng termasuk barang yang dipenuhi dengan cara ____.", o:["dibeli","dibuat","ditemukan"], a:0 },
+  { t:"Gelang termasuk barang yang dipenuhi dengan cara ____.", o:["dibuat","dibeli","dijual"], a:0 },
+  { t:"Beras dan sayur adalah kebutuhan ibu untuk ____.", o:["memasak","menjahit","bermain"], a:0 },
+  { t:"Setelah membeli barang, pembeli mengucapkan ____.", o:["terima kasih","kemarahan","keluhan"], a:0 }
+];
+
+window.ETP_UNITS = [
+  { id:"bab2", label:"Bab 2 · Kebutuhan & Keinginan",
+    sub:"Bab 2 - Kebutuhan & Keinginan",
+    zh:"Kebiasaan Keluargaku • Kebutuhan Primer & Sekunder • Kebutuhan atau Keinginan",
+    data:{ MATERI, MCQ, BENARSALAH, RIDDLE, MATCH_SETS, MATCH_PAIRS, FILL, shuffle, pickN } },
+  { id:"bab3", label:"Bab 3 · Memenuhi Kebutuhanku",
+    sub:"Bab 3 - Memenuhi Kebutuhanku",
+    zh:"Kebutuhan • Layanan • Tempat & Barang • Penjual & Pembeli",
+    data:{ MATERI:MATERI3, MCQ:MCQ3, BENARSALAH:BENARSALAH3, RIDDLE:RIDDLE3, MATCH_SETS:MATCH_SETS3, MATCH_PAIRS, FILL:FILL3, shuffle, pickN } }
+];
+
+/* kompatibilitas: modul lain masih membaca ETP_DATA */
+window.ETP_DATA = window.ETP_UNITS[0].data;

@@ -3,7 +3,24 @@
 "use strict";
 
 /* ---------- data access ---------- */
-const D = window.ETP_DATA;
+let UNIT = window.ETP_UNITS[0];
+let D = UNIT.data;
+
+/* ---------- pilih bab ---------- */
+function setUnit(u){
+  UNIT=u; D=u.data;
+  document.querySelectorAll("#chapterBtns button").forEach(b=>b.classList.toggle("sel",b.dataset.id===u.id));
+  document.querySelector("#screen-home .subtitle").textContent=u.sub;
+  document.querySelector("#screen-home .zh").textContent=u.zh;
+  const bm=document.getElementById("btnMateri");
+  if(bm) bm.textContent="📖 Materi "+u.label.split("·")[0].trim();
+}
+document.addEventListener("click",(e)=>{
+  const b=e.target.closest("#chapterBtns button");
+  if(!b)return;
+  const u=window.ETP_UNITS.find(x=>x.id===b.dataset.id);
+  if(u){setUnit(u);FX.click();}
+});
 
 /* ---------- KUNCI KONSEP (anti soal kembar dalam 1 sesi) ----------
    Banyak fakta muncul di lebih dari satu bank soal: "keinginan bisa ditunda"
@@ -109,6 +126,7 @@ $("#btnStart").addEventListener("click",()=>{ensureAudio();FX.click();startQuiz(
 
 function openMateri(){
   stopSpeak();
+  document.querySelector("#screen-materi .topbar-title").textContent="Materi "+UNIT.label.split("·")[0].trim();
   $("#materiBody").innerHTML=D.MATERI.map((m,i)=>`
     <div class="ayat-card">
       <h3>${m.t}</h3>
