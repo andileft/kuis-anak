@@ -182,6 +182,84 @@ const BELAJAR2 = [
   { t:"💪 Tugasku", d:"Mematuhi aturan di rumah dan di sekolah adalah bentuk tanggung jawabku sebagai anak yang baik." }
 ];
 
+/* ======================================================= */
+/* ===== BAB 3 : Kita Berbeda-Beda ======================== */
+/* Sumber: FORMATIF P.PANCASILA BAB 3 (SD Stella Maris,
+   Jumat 17-10-2026) + poster materi "Kita Berbeda-beda"
+   (Pendidikan Pancasila Kelas 1SD) di Quintal.
+   Sumatif SAS: Rabu 25 November 2026.                     */
+/* ======================================================= */
+
+const BANK3 = [
+  /* --- dari FORMATIF BAB 3 (PG) --- */
+  { q:"Caca suka ikan goreng. Nina suka telur rebus. Mereka memiliki perbedaan ....",
+    o:["makanan kesukaan","hobi","ciri fisik"], a:0, mode:"mcq" },
+  { q:"Berikut yang BUKAN warna kulit adalah ....",
+    o:["lurus","sawo matang","kuning langsat"], a:0, mode:"mcq" },
+  { q:"Kamu suka bermain sepak bola, sedangkan Dio suka membaca buku. Sikap kalian seharusnya ....",
+    o:["saling menghargai kesukaan masing-masing","saling memaksakan permainan","bertengkar karena beda kesukaan"], a:0, mode:"mcq" },
+  { q:"Perbedaan ciri fisik pada teman adalah ....",
+    o:["rambut lurus dan keriting","suka makan ayam bakar","suka membaca dan berenang"], a:0, mode:"mcq" },
+  { q:"Ciri-ciri khusus yang kita miliki disebut ....",
+    o:["identitas diri","nama","ciri fisik"], a:0, mode:"mcq" },
+  { q:"Akibat jika kita tidak menghargai perbedaan dengan teman di kelas adalah ....",
+    o:["terjadi pertengkaran","hidup rukun","punya banyak teman"], a:0, mode:"mcq" },
+  /* --- dari FORMATIF BAB 3 (isian) --- */
+  { q:"Meskipun kamu dan teman memiliki hobi yang berbeda, kita harus saling ____.",
+    o:["menghargai","memaksa","mengejek"], a:0, mode:"both" },
+  { q:"Suku Bali ada di pulau ____.", o:["Bali","Jawa","Sumatra"], a:0, mode:"both" },
+  { q:"Suku Sunda ada di pulau ____.", o:["Jawa","Bali","Kalimantan"], a:0, mode:"both" },
+  { q:"Kakak gemar menyanyi. Adik gemar menari. Mereka mempunyai keragaman ____.",
+    o:["hobi","ciri fisik","suku"], a:0, mode:"both" },
+  { q:"Indonesia disebut negara ____.", o:["kepulauan","kota","gurun"], a:0, mode:"both" },
+  /* --- dari poster materi "Kita Berbeda-beda" --- */
+  { q:"Setiap orang memiliki perbedaan yang ....", o:["istimewa","buruk","sama"], a:0, mode:"both" },
+  { q:"Contoh perbedaan di antara teman adalah ....",
+    o:["hobi, kesukaan, kemampuan, dan ciri fisik","warna buku tulis saja","jumlah sepatu"], a:0, mode:"mcq" },
+  { q:"Berikut yang termasuk ciri-ciri fisik adalah ....",
+    o:["warna kulit dan bentuk rambut","hobi melukis","makanan kesukaan"], a:0, mode:"mcq" },
+  { q:"Sikap kita terhadap perbedaan adalah ....",
+    o:["menghargai dan hidup rukun","mengejek teman","menjauhi teman"], a:0, mode:"both" },
+  { q:"Perilaku yang BAIK terhadap teman adalah ....",
+    o:["berbagi mainan dan mengajak bermain","mengejek dan meninggalkan teman","berbohong kepada teman"], a:0, mode:"mcq" },
+  { q:"Perilaku yang TIDAK BAIK terhadap teman adalah ....",
+    o:["mengejek teman","membantu teman","mendengarkan teman"], a:0, mode:"mcq" },
+  { q:"Mengapa kita harus menghargai perbedaan? Agar ....",
+    o:["mendapat banyak teman dan sekolah gembira","teman menjauh","semua orang sama"], a:0, mode:"mcq" },
+  { q:"Pesan penting tentang perbedaan adalah ....",
+    o:["bersama dalam perbedaan, kita jadi lebih kuat","perbedaan membuat kita lemah","perbedaan harus dihilangkan"], a:0, mode:"both" },
+  { q:"Saat ada teman yang jatuh, sikap kita adalah ....",
+    o:["membantu","menertawakan","meninggalkan"], a:0, mode:"both" },
+  { q:"Bermain bersama teman yang berbeda suku membuat kita ....",
+    o:["belajar hal baru dan hidup rukun","bertengkar","merasa paling hebat"], a:0, mode:"mcq" },
+  { q:"Warna kulit yang ada pada teman-teman kita ....",
+    o:["berbeda-beda dan itu wajar","selalu sama","harus disamakan"], a:0, mode:"both" }
+];
+
+/* Klasifikasi perilaku: perilaku -> Baik / Tidak Baik (poster bagian 4) */
+const PERILAKU = [
+  { i:1,  a:"Berbagi mainan",              t:"Baik" },
+  { i:2,  a:"Mengejek teman",              t:"Tidak Baik" },
+  { i:3,  a:"Mengajak teman bermain",      t:"Baik" },
+  { i:4,  a:"Meninggalkan teman",          t:"Tidak Baik" },
+  { i:5,  a:"Mendengarkan teman berbicara",t:"Baik" },
+  { i:6,  a:"Berbohong",                   t:"Tidak Baik" },
+  { i:7,  a:"Membantu teman yang jatuh",   t:"Baik" },
+  { i:8,  a:"Mementingkan diri sendiri",   t:"Tidak Baik" },
+  { i:9,  a:"Menghargai perbedaan teman",  t:"Baik" },
+  { i:10, a:"Menertawakan ciri fisik teman",t:"Tidak Baik" }
+];
+
+const BELAJAR3 = [
+  { t:"🌈 Apa Arti Berbeda-beda?", d:"Setiap orang memiliki perbedaan yang istimewa! Perbedaan itu wajar dan tidak perlu dijadikan alasan untuk menjauh." },
+  { t:"📚 Contoh Perbedaan", d:"Ada perbedaan hobi (melukis, bermain bola), kesukaan (makanan, hewan), kemampuan (berhitung, berlari), dan ciri-ciri fisik (warna kulit, bentuk rambut dan wajah)." },
+  { t:"🤝 Sikap terhadap Perbedaan", d:"Membantu, bermain bersama, menghargai, dan hidup rukun dengan semua teman." },
+  { t:"✅ Perilaku Baik", d:"Berbagi mainan, mengajak teman bermain, mendengarkan, dan membantu." },
+  { t:"❌ Perilaku Tidak Baik", d:"Mengejek, meninggalkan teman, berbohong, dan mementingkan diri sendiri." },
+  { t:"💪 Mengapa Menghargai Perbedaan?", d:"Agar mendapat banyak teman, sekolah menjadi gembira, bisa belajar hal baru, menjadi lebih kuat, dan menghormati sesama." },
+  { t:"🇮🇩 Indonesia Negara Kepulauan", d:"Indonesia disebut negara kepulauan karena punya banyak pulau. Ada suku Jawa di pulau Jawa, suku Bali di pulau Bali, suku Sunda di pulau Jawa, dan banyak suku lainnya." }
+];
+
 /* Unit data per bab: engine dan home screen membaca ini */
 window.PANCASILA_UNITS = [
   { id:"bab1", label:"Bab 1 · Aku Cinta Indonesia",
@@ -195,7 +273,15 @@ window.PANCASILA_UNITS = [
     zh:"Aturan di Rumah • Aturan di Sekolah • Hidup Tertib",
     kind:"rules",
     data:{ RULES:RULES, BANK:BANK2, BELAJAR:BELAJAR2, shuffle:shuffle, pickN:pickN },
-    belajar:"aturan" }
+    belajar:"aturan" },
+  { id:"bab3", label:"Bab 3 · Kita Berbeda-Beda",
+    sub:"Kita Berbeda-Beda — Saling Menghargai",
+    zh:"Ciri Fisik • Hobi • Suku & Pulau • Perilaku Baik",
+    kind:"rules",
+    data:{ RULES:PERILAKU, BANK:BANK3, BELAJAR:BELAJAR3, shuffle:shuffle, pickN:pickN },
+    belajar:"aturan",
+    matchPrompt:"Cocokkan perilaku dengan Baik / Tidak Baik",
+    colL:"Perilaku", colR:"Baik / Tidak Baik?" }
 ];
 
 window.PANCASILA_DATA = { SILA, BANK, MATCH_SCHEMAS, shuffle, pickN };

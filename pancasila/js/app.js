@@ -147,7 +147,9 @@ function matchQuestionForSchema(schema){
 function rulesMatchQuestion(sub){
   const left=D.shuffle(sub.map(function(p){return {key:String(p.i),html:p.a};}));
   const right=D.shuffle(sub.map(function(p){return {key:String(p.i),html:p.t};}));
-  return {type:"match",rules:true,left,right,leftLabel:"Kegiatan",rightLabel:"Rumah / Sekolah?"};
+  return {type:"match",rules:true,left,right,
+    leftLabel:UNIT.colL||"Kegiatan",
+    rightLabel:UNIT.colR||"Rumah / Sekolah?"};
 }
 function rulesMatchVariants(){
   const seen=new Set(); const vs=[];
@@ -290,7 +292,7 @@ function renderQuestion(){
     buildOptions(list);
   }
   else if(q.type==="match"){
-    prompt.innerHTML=q.rules?"Cocokkan kegiatan dengan tempat aturannya":q.schema.label;
+    prompt.innerHTML=q.rules?(UNIT.matchPrompt||"Cocokkan kegiatan dengan tempat aturannya"):q.schema.label;
     main.style.display="none"; // match pakai area options penuh
     renderMatch(q);
     return;
