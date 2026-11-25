@@ -3,7 +3,24 @@
 "use strict";
 
 /* ---------- data access ---------- */
-const D = window.ENGLISH_DATA;
+let D = window.ENGLISH_UNITS[0].data;
+let UNIT = window.ENGLISH_UNITS[0];
+
+/* ---------- pilih bab ---------- */
+function setUnit(u){
+  UNIT=u; D=u.data;
+  document.querySelectorAll("#chapterBtns button").forEach(b=>b.classList.toggle("sel",b.dataset.id===u.id));
+  document.querySelector("#screen-home .subtitle").textContent=u.sub;
+  document.querySelector("#screen-home .zh").textContent=u.zh;
+  const bm=document.getElementById("btnMateri");
+  if(bm) bm.textContent="📖 Materi "+u.label.split("·")[0].trim();
+}
+document.addEventListener("click",(e)=>{
+  const b=e.target.closest("#chapterBtns button");
+  if(!b)return;
+  const u=window.ENGLISH_UNITS.find(x=>x.id===b.dataset.id);
+  if(u){setUnit(u);FX.click();}
+});
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 let actx=null;
@@ -70,6 +87,8 @@ $("#btnStart").addEventListener("click",()=>{ensureAudio();FX.click();startQuiz(
 
 function openMateri(){
   stopSpeak();
+  const tt=document.querySelector("#screen-materi .topbar-title");
+  if(tt) tt.textContent="Materi "+UNIT.label.split("·")[0].trim();
   $("#materiBody").innerHTML=D.MATERI.map((m,i)=>`
     <div class="ayat-card">
       <h3>${m.t}</h3>
