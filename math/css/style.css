@@ -50,6 +50,13 @@ html, body {
 }
 .count-btns button.sel { background:var(--gold); box-shadow:0 4px 0 var(--gold-d); transform:scale(1.08); }
 
+/* baris pilih bab: label panjang, jadi tombol melebar dan bisa turun baris */
+.chapter-btns { flex-wrap:wrap; }
+.chapter-btns button {
+  width:auto; height:auto; padding:9px 13px; font-size:14px;
+  border-radius:14px; white-space:nowrap;
+}
+
 .big-btn {
   display:block; width:min(88%,380px); margin:14px auto; padding:18px; border:none;
   border-radius:20px; font-size:25px; font-weight:800; color:#fff; cursor:pointer;

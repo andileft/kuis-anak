@@ -5,7 +5,22 @@
 "use strict";
 
 /* ---------- data access ---------- */
-const D = window.MATH_DATA;
+let UNITS = window.MATH_UNITS || [ { id:"bab2", label:"Bab 2", sub:"", zh:"", data: window.MATH_DATA } ];
+let UNIT = UNITS[0];
+let D = UNIT.data;
+
+/* ganti bab aktif: bank soal, judul, dan label tombol materi ikut berubah */
+function setUnit(u){
+  if(!u) return;
+  UNIT = u; D = u.data;
+  $$("#chapterBtns button").forEach(b=>b.classList.toggle("sel", b.dataset.id===u.id));
+  const sub=$(".subtitle"), zh=$(".zh");
+  if(sub) sub.textContent = u.sub;
+  if(zh) zh.textContent = u.zh;
+  const btn=$("#btnMateri");
+  if(btn) btn.textContent = "📖 Materi " + u.label.split("·")[0].trim();
+}
+
 
 /* ---------- KUNCI KONSEP (anti soal kembar dalam 1 sesi) ----------
    Kunci ditulis langsung di tiap soal (field "k") supaya fakta yang sama
@@ -82,10 +97,18 @@ $("#countBtns").addEventListener("click",(e)=>{
   $$("#countBtns button").forEach(x=>x.classList.toggle("sel",x===b));
   FX.click();
 });
+$("#chapterBtns").addEventListener("click",(e)=>{
+  const b=e.target.closest("button");if(!b)return;
+  const u=UNITS.find(x=>x.id===b.dataset.id);
+  if(!u||u===UNIT)return;
+  setUnit(u);FX.click();
+});
 $("#btnStart").addEventListener("click",()=>{ensureAudio();FX.click();startQuiz();});
 
 function openMateri(){
   stopSpeak();
+  const tt=document.querySelector("#screen-materi .topbar-title");
+  if(tt) tt.textContent="Materi "+UNIT.label.split("·")[0].trim();
   $("#materiBody").innerHTML=D.MATERI.map((m,i)=>`
     <div class="ayat-card">
       <h3>${m.t}</h3>

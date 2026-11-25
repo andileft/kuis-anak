@@ -282,4 +282,21 @@ const CERITA = [
     o:["1","2","3"], a:0, chk:"diff:6-5", k:"c-kupu" }
 ];
 
-window.MATH_DATA = { MATERI, MCQ, BENARSALAH, RIDDLE, MATCH_SETS, MATCH_PAIRS, FILL, CERITA, shuffle, pickN };
+/* ---------- 7) DAFTAR BAB (pemilih di layar utama) ----------
+   Bab 2 tinggal di file ini; Bab 3 ada di js/data_bab3.js (window.MATH_BAB3). */
+window.MATH_UNITS = [
+  { id:"bab2", label:"Bab 2 · Penjumlahan & Pengurangan",
+    sub:"Bab 2 — Penjumlahan & Pengurangan sampai 10",
+    zh:"Arti Penjumlahan • Menjumlah sampai 10 • Pengurangan • Hubungan Tambah & Kurang • Soal Cerita",
+    data:{ MATERI, MCQ, BENARSALAH, RIDDLE, MATCH_SETS, MATCH_PAIRS, FILL, CERITA, shuffle, pickN } }
+];
+if(window.MATH_BAB3){
+  window.MATH_UNITS.push({
+    id:"bab3", label:"Bab 3 · Berbagai Bentuk Benda",
+    sub:"Bab 3 — Berbagai Bentuk Benda",
+    zh:"Segitiga • Segi Empat • Lingkaran • Mengelompokkan Benda • Pengubinan • Tangram",
+    data:Object.assign({}, window.MATH_BAB3, { MATCH_PAIRS: window.MATH_BAB3.MATCH_PAIRS || MATCH_PAIRS, shuffle, pickN })
+  });
+}
+
+window.MATH_DATA = window.MATH_UNITS[0].data;   // alias kompatibilitas
